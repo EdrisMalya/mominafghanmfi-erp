@@ -51,7 +51,7 @@ export const urlFinder = (onlyUrl = false) => {
         url = process.env.END_POINT_URL
     }
     if (onlyUrl) {
-        return url.replaceAll('/api', '')
+        return url.replaceAll('/api', '/')
     }
     return url
 }
