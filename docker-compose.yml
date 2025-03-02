@@ -50,7 +50,7 @@ services:
     volumes:
       - /home/volumns/erp:/var/www/storage
     depends_on:
-      - MySQL
+      - mysql
 
   admin-frontend:
     build:
