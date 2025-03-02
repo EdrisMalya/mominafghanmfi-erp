@@ -40,14 +40,16 @@ RUN composer install --no-interaction --no-plugins --no-scripts --ignore-platfor
 
 COPY . .
 
+# Create storage directories
 RUN mkdir -p \
     storage/app \
     storage/framework/cache \
     storage/framework/sessions \
     storage/framework/testing \
     storage/framework/views \
-    storage/logs \
+    storage/logs  # <-- No backslash here
 
+# Set permissions
 RUN chown -R www-data.www-data /var/www/storage
 RUN chown -R www-data.www-data /var/www/bootstrap/cache
 
