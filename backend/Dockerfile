@@ -39,12 +39,33 @@ COPY ./composer.json .
 RUN composer install --no-interaction --no-plugins --no-scripts --ignore-platform-req=ext-zip --ignore-platform-req=ext-sockets
 
 COPY . .
+
+RUN mkdir -p \
+    storage/app \
+    storage/framework/cache \
+    storage/framework/sessions \
+    storage/framework/testing \
+    storage/framework/views \
+    storage/logs \
+
 RUN chown -R www-data.www-data /var/www/storage
 RUN chown -R www-data.www-data /var/www/bootstrap/cache
 
 COPY start-container /usr/local/bin/start-container
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 RUN chmod +x /usr/local/bin/start-container
+
+
+RUN echo "upload_max_filesize = 500M" >> /etc/php/8.1/fpm/php.ini && \
+    echo "post_max_size = 500M" >> /etc/php/8.1/fpm/php.ini && \
+    echo "max_execution_time = 600" >> /etc/php/8.1/fpm/php.ini && \
+    echo "max_input_time = 600" >> /etc/php/8.1/fpm/php.ini && \
+    echo "memory_limit = 2500M" >> /etc/php/8.1/fpm/php.ini
+    RUN echo "upload_max_filesize = 500M" >> /etc/php/8.1/cli/php.ini && \
+    echo "post_max_size = 500M" >> /etc/php/8.1/cli/php.ini && \
+    echo "max_execution_time = 600" >> /etc/php/8.1/cli/php.ini && \
+    echo "max_input_time = 600" >> /etc/php/8.1/cli/php.ini && \
+    echo "memory_limit = 2500M" >> /etc/php/8.1/cli/php.ini
 
 EXPOSE 6001
 EXPOSE 80
