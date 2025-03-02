@@ -1,0 +1,37 @@
+import { userManagementRoutes } from 'pages/UserManagement/userManagementRoutes'
+import { configurationRoutes } from 'pages/Configurations/configurationRoutes'
+
+const routes = [
+    {
+        path: '/',
+        component: () => import('layouts/MainLayout.vue'),
+        children: [
+            { path: '', component: () => import('pages/IndexPage.vue') },
+            { ...configurationRoutes },
+            { ...userManagementRoutes },
+        ],
+    },
+
+    {
+        path: '/login',
+        component: () => import('pages/LoginPage.vue'),
+    },
+
+    {
+        path: '/server-error',
+        component: () => import('pages/ServerErrorPage.vue'),
+    },
+    {
+        path: '/forbidden',
+        component: () => import('pages/ForbiddenPage.vue'),
+    },
+
+    // Always leave this as last one,
+    // but you can also remove it
+    {
+        path: '/:catchAll(.*)*',
+        component: () => import('pages/ErrorNotFound.vue'),
+    },
+]
+
+export default routes
