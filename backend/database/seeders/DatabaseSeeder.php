@@ -21,5 +21,16 @@ class DatabaseSeeder extends Seeder
         $this->call(RolePermissionsTableSeeder::class);
         $this->call(LanguagesTableSeeder::class);
         $this->call(LanguageWordsTableSeeder::class);
+        $this->call(BackupHistoriesTableSeeder::class);
+        $this->call(BranchesTableSeeder::class);
+        $this->call(FailedJobsTableSeeder::class);
+        $this->call(ImagesTableSeeder::class);
+        $this->call(JobsTableSeeder::class);
+        $this->call(LoginLogsTableSeeder::class);
+        $this->call(NotificationsTableSeeder::class);
+        $this->call(PasswordResetTokensTableSeeder::class);
+        $this->call(PersonalAccessTokensTableSeeder::class);
+        $this->call(ProvincesTableSeeder::class);
+        $this->call(WebsocketsStatisticsEntriesTableSeeder::class);
     }
 }

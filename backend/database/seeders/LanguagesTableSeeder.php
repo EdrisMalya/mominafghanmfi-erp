@@ -21,12 +21,12 @@ class LanguagesTableSeeder extends Seeder
         \DB::table('languages')->insert(array (
             0 => 
             array (
-                'abbr' => 'da',
-                'created_at' => '2023-09-27 17:45:49',
-                'direction' => 'rtl',
                 'id' => 1,
                 'name' => 'دری',
+                'abbr' => 'da',
                 'status' => 1,
+                'direction' => 'rtl',
+                'created_at' => '2023-09-27 17:45:49',
                 'updated_at' => '2023-09-27 17:45:49',
             ),
         ));

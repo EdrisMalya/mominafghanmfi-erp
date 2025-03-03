@@ -21,103 +21,123 @@ class PermissionGroupsTableSeeder extends Seeder
         \DB::table('permission_groups')->insert(array (
             0 => 
             array (
-                'created_at' => '2024-11-16 03:05:25',
-                'icon' => 'people',
                 'id' => 1,
                 'name' => 'User management',
+                'icon' => 'people',
                 'permission_group_id' => 0,
                 'sort' => 0,
+                'created_at' => '2024-11-16 03:05:25',
                 'updated_at' => '2024-11-16 03:05:25',
             ),
             1 => 
             array (
-                'created_at' => '2024-11-17 15:59:25',
-                'icon' => 'person',
                 'id' => 2,
                 'name' => 'Users',
+                'icon' => 'person',
                 'permission_group_id' => 1,
                 'sort' => 0,
+                'created_at' => '2024-11-17 15:59:25',
                 'updated_at' => '2024-11-17 15:59:25',
             ),
             2 => 
             array (
-                'created_at' => '2024-11-17 15:59:33',
-                'icon' => 'lock',
                 'id' => 3,
                 'name' => 'Roles',
+                'icon' => 'lock',
                 'permission_group_id' => 1,
                 'sort' => 1,
+                'created_at' => '2024-11-17 15:59:33',
                 'updated_at' => '2024-11-17 15:59:43',
             ),
             3 => 
             array (
-                'created_at' => '2024-11-17 15:59:58',
-                'icon' => 'directions_run',
                 'id' => 4,
                 'name' => 'Activity log',
+                'icon' => 'directions_run',
                 'permission_group_id' => 1,
                 'sort' => 2,
+                'created_at' => '2024-11-17 15:59:58',
                 'updated_at' => '2024-11-17 15:59:58',
             ),
             4 => 
             array (
-                'created_at' => '2024-11-17 16:00:12',
-                'icon' => 'article',
                 'id' => 5,
                 'name' => 'Login log',
+                'icon' => 'article',
                 'permission_group_id' => 1,
                 'sort' => 3,
+                'created_at' => '2024-11-17 16:00:12',
                 'updated_at' => '2024-11-17 16:00:12',
             ),
             5 => 
             array (
-                'created_at' => '2024-11-17 16:00:32',
-                'icon' => NULL,
                 'id' => 6,
                 'name' => 'Log activity',
+                'icon' => NULL,
                 'permission_group_id' => 2,
                 'sort' => 0,
+                'created_at' => '2024-11-17 16:00:32',
                 'updated_at' => '2024-11-17 16:00:32',
             ),
             6 => 
             array (
-                'created_at' => '2024-11-17 16:03:16',
-                'icon' => 'settings',
                 'id' => 7,
                 'name' => 'Configurations',
+                'icon' => 'settings',
                 'permission_group_id' => 0,
                 'sort' => 1,
+                'created_at' => '2024-11-17 16:03:16',
                 'updated_at' => '2024-11-17 16:03:16',
             ),
             7 => 
             array (
-                'created_at' => '2024-11-17 16:03:49',
-                'icon' => 'cloud_download',
                 'id' => 8,
                 'name' => 'Backup',
+                'icon' => 'cloud_download',
                 'permission_group_id' => 7,
                 'sort' => 0,
+                'created_at' => '2024-11-17 16:03:49',
                 'updated_at' => '2024-11-17 16:03:49',
             ),
             8 => 
             array (
-                'created_at' => '2024-11-17 16:04:35',
-                'icon' => 'language',
                 'id' => 9,
                 'name' => 'Languages',
+                'icon' => 'language',
                 'permission_group_id' => 7,
                 'sort' => 1,
+                'created_at' => '2024-11-17 16:04:35',
                 'updated_at' => '2024-11-17 16:04:40',
             ),
             9 => 
             array (
-                'created_at' => '2024-11-17 16:06:02',
-                'icon' => 'g_translate',
                 'id' => 10,
                 'name' => 'Language dictionary',
+                'icon' => 'g_translate',
                 'permission_group_id' => 9,
                 'sort' => 0,
+                'created_at' => '2024-11-17 16:06:02',
                 'updated_at' => '2024-11-17 16:06:10',
+            ),
+            10 => 
+            array (
+                'id' => 11,
+                'name' => 'System configurations',
+                'icon' => 'settings',
+                'permission_group_id' => 7,
+                'sort' => 2,
+                'created_at' => '2025-03-03 20:38:37',
+                'updated_at' => '2025-03-03 20:38:54',
+            ),
+            11 => 
+            array (
+                'id' => 12,
+                'name' => 'Branch configurations',
+                'icon' => NULL,
+                'permission_group_id' => 11,
+                'sort' => 0,
+                'created_at' => '2025-03-03 20:39:14',
+                'updated_at' => '2025-03-03 20:39:14',
             ),
         ));
         
