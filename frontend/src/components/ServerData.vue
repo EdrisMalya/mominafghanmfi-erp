@@ -26,7 +26,6 @@
 </template>
 <script>
 import { defineComponent, ref, watch } from 'vue'
-import useSWRV from 'swrv'
 import { api } from 'boot/axios'
 import { errorHandler } from 'src/lib/errorHandler'
 import { useRouter } from 'vue-router'
@@ -66,48 +65,58 @@ export default defineComponent({
     },
     setup(prop) {
         const router = useRouter()
-        const fetcher = url =>
-            api
-                .get(url)
-                .then(res => (prop.fromResource ? res.data.data : res.data))
-                .catch(err => errorHandler(err, '', router))
-        const {
-            data: serverData,
-            error,
-            mutate,
-        } = useSWRV(prop.url, prop.fetchData && fetcher)
         const generalStore = useGeneralStore()
-        let data = ref(undefined)
+        const data = ref(undefined)
+        const error = ref(null)
+
+        const fetchDataFromServer = async () => {
+            if (!prop.fetchData || !prop.url) return
+
+            try {
+                const response = await api.get(prop.url)
+                data.value = prop.fromResource
+                    ? response.data.data
+                    : response.data
+                if (prop.onDataReceived) {
+                    prop.onDataReceived(data.value)
+                }
+            } catch (err) {
+                errorHandler(err, '', router)
+                error.value = err
+            }
+        }
+
         watch(
             () => generalStore.revalidateServerData,
             newValue => {
-                if (newValue && newValue === prop.id) {
+                if ((newValue && newValue === prop.id) || newValue === '*') {
                     data.value = undefined
-                    mutate().finally(() => {
+                    fetchDataFromServer().finally(() => {
                         generalStore.revalidate(null)
                     })
                 }
             },
         )
 
-        watch(serverData, newValue => {
-            if (newValue) {
-                data.value = newValue
-                if (prop.onDataReceived) {
-                    prop.onDataReceived(newValue)
-                }
-            }
-        })
+        watch(
+            () => prop.url,
+            () => {
+                data.value = undefined
+                error.value = null
+                fetchDataFromServer()
+            },
+        )
+
+        fetchDataFromServer()
 
         return {
-            serverData,
-            error,
             data,
+            error,
         }
     },
     mounted() {
-        if (this.serverData) {
-            this.data = this.serverData
+        if (this.data) {
+            this.data = this.data
         }
     },
 })

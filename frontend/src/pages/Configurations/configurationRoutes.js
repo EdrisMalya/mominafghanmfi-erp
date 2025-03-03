@@ -1,3 +1,5 @@
+import { systemConfigurationRoutes } from 'pages/Configurations/SystemConfigurations/systemConfigurationRoutes'
+
 export const configurationRoutes = {
     component: () => import('layouts/ConfigurationsLayout.vue'),
     path: '/configurations',
@@ -88,5 +90,6 @@ export const configurationRoutes = {
                 active: 'backups',
             },
         },
+        { ...systemConfigurationRoutes },
     ],
 }

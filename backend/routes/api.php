@@ -41,6 +41,11 @@ Route::middleware(['auth:sanctum'])->group(function(){
 
     Route::group(['prefix' => 'configurations'], function(){
 
+        Route::group(['prefix' => 'system-configurations'], function (){
+            Route::resource('branch-province', \App\Http\Controllers\Configurations\SystemConfigurations\ProvinceController::class);
+            Route::resource('branch', \App\Http\Controllers\Configurations\SystemConfigurations\BranchController::class);
+        });
+
         Route::resource('languages', \App\Http\Controllers\Configurations\LanguagesController::class);
         Route::resource('language/words', \App\Http\Controllers\Configurations\LanguageWordController::class);
         Route::get('backup/run', [\App\Http\Controllers\Configurations\BackupController::class, 'run']);

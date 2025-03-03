@@ -11,6 +11,14 @@
                             <protected-component
                                 v-for="link in [
                                     {
+                                        permission:
+                                            'system-configurations-access',
+                                        to: '/configurations/system-configurations',
+                                        name: 'system_configurations',
+                                        icon: 'settings',
+                                        label: 'System configurations',
+                                    },
+                                    {
                                         permission: 'languages-access',
                                         to: '/configurations/languages',
                                         name: 'languages',
@@ -67,6 +75,9 @@ export default defineComponent({
         return {
             translate,
         }
+    },
+    mounted() {
+        this.$generalStore.setActivePage('configurations')
     },
 })
 </script>

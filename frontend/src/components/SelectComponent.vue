@@ -22,33 +22,9 @@
             :error-message="$translate(errorMessage)"
             @update:model-value="updateValue"
         >
-            <template
-                v-if="createdAble && languageStore.direction == 'rtl'"
-                #prepend
-            >
-                <q-btn
-                    size="xs"
-                    icon="add"
-                    round
-                    color="primary"
-                    @click="handleAddClick(true)"
-                />
+            <template v-slot:append>
+                <slot name="actions" />
             </template>
-            <template
-                v-else-if="createdAble && languageStore.direction == 'ltr'"
-                #append
-            >
-                <q-btn
-                    size="xs"
-                    icon="add"
-                    round
-                    color="primary"
-                    @click="handleAddClick(true)"
-                />
-            </template>
-            <!--            <template v-slot:prepend v-if="icon">-->
-            <!--                <q-icon :name="icon" />-->
-            <!--            </template>-->
         </q-select>
     </div>
     <select-component-create-forms
@@ -90,6 +66,7 @@ export default defineComponent({
         'icon',
         'findFromId',
         'onCreate',
+        'findField',
     ],
     setup(prop) {
         const router = useRouter()
@@ -275,9 +252,18 @@ export default defineComponent({
         },
         serverData(newValue) {
             if (this.findFromId) {
-                const index = newValue?.data.findIndex(
-                    obj => obj.id === this.defaultValue,
-                )
+                let index = 0
+                if (!this.findField) {
+                    index = newValue?.data.findIndex(
+                        obj => obj.id === this.defaultValue,
+                    )
+                } else {
+                    index = newValue?.data.findIndex(
+                        obj =>
+                            resolve(this.findField, obj) === this.defaultValue,
+                    )
+                }
+
                 if (index !== -1) {
                     const value = newValue.data[index]
                     this.value = {
