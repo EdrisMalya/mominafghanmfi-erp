@@ -14,13 +14,22 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware(['auth:sanctum'])->group(function(){
+
+    Route::group(['prefix' => 'general'], function (){
+       Route::get('country-provinces', [\App\Http\Controllers\GeneralController::class, 'countryProvinces']);
+    });
+
     Route::get('/user', [\App\Http\Controllers\UserManagement\UserManagementController::class, 'user']);
     Route::post('/change-password', [\App\Http\Controllers\UserManagement\UserManagementController::class, 'changePassword']);
 
+    Route::group(['prefix' => 'customer-management'], function (){
+       Route::resource('customers', \App\Http\Controllers\CustomerServices\CustomerController::class);
+    });
+
     Route::group(['prefix' => 'user-management'], function (){
         Route::resource('users', \App\Http\Controllers\UserManagement\UserManagementController::class);
-        Route::resource('customers', \App\Http\Controllers\UserManagement\CustomersController::class);
-        Route::resource('suppliers', \App\Http\Controllers\UserManagement\SupplierController::class);
+        Route::match(['GET', 'POST'],'user/profile/{user}', [\App\Http\Controllers\UserManagement\UserManagementController::class, 'userProfile']);
+
         Route::resource('roles', \App\Http\Controllers\UserManagement\RoleController::class);
 
         Route::middleware(['isSuperAdmin'])->group(function(){
@@ -62,5 +71,4 @@ Route::get('language/words', [\App\Http\Controllers\Configurations\LanguagesCont
 Route::middleware('auth:sanctum')->post('/logout', [\App\Http\Controllers\UserManagement\UserManagementController::class, 'logout']);
 
 Route::post('/login', [\App\Http\Controllers\UserManagement\UserManagementController::class, 'login']);
-Route::any('general/{what}', [\App\Http\Controllers\GeneralController::class, "what"]);
 

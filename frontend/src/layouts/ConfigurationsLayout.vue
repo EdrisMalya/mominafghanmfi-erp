@@ -78,6 +78,7 @@ export default defineComponent({
     },
     mounted() {
         this.$generalStore.setActivePage('configurations')
+        this.$generalStore.setPageTitle('Configurations')
     },
 })
 </script>

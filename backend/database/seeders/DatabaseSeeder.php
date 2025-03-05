@@ -32,5 +32,8 @@ class DatabaseSeeder extends Seeder
         $this->call(PersonalAccessTokensTableSeeder::class);
         $this->call(ProvincesTableSeeder::class);
         $this->call(WebsocketsStatisticsEntriesTableSeeder::class);
+        $this->call(UserProfilesTableSeeder::class);
+        $this->call(CountryProvincesTableSeeder::class);
+        $this->call(CustomersTableSeeder::class);
     }
 }

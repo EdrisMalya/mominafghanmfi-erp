@@ -1,5 +1,6 @@
 import { userManagementRoutes } from 'pages/UserManagement/userManagementRoutes'
 import { configurationRoutes } from 'pages/Configurations/configurationRoutes'
+import { customerServicesRoutes } from 'pages/CustomerServices/customerServicesRoutes'
 
 const routes = [
     {
@@ -7,8 +8,9 @@ const routes = [
         component: () => import('layouts/MainLayout.vue'),
         children: [
             { path: '', component: () => import('pages/IndexPage.vue') },
-            { ...configurationRoutes },
+            { ...customerServicesRoutes },
             { ...userManagementRoutes },
+            { ...configurationRoutes },
         ],
     },
 

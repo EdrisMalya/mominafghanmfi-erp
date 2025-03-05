@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\ProvinceResource;
+use App\Models\CountryProvince;
 use App\Models\Province;
 use Illuminate\Http\Request;
 
@@ -15,6 +16,11 @@ class GeneralController extends Controller
                     Province::query()->get()
                 );
         }
+    }
+
+    public function countryProvinces()
+    {
+        return CountryProvince::query()->where('active', true)->get();
     }
 
     private function handlePost($what){

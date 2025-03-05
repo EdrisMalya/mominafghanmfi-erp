@@ -316,6 +316,105 @@ class PermissionsTableSeeder extends Seeder
                 'created_at' => '2025-03-03 20:39:29',
                 'updated_at' => '2025-03-03 20:39:29',
             ),
+            33 => 
+            array (
+                'id' => 34,
+                'name' => 'Access',
+                'key' => 'document-formats-access',
+                'permission_group_id' => 13,
+                'created_at' => '2025-03-04 21:17:43',
+                'updated_at' => '2025-03-04 21:17:43',
+            ),
+            34 => 
+            array (
+                'id' => 35,
+                'name' => 'Profile edit',
+                'key' => 'users-profile-edit',
+                'permission_group_id' => 2,
+                'created_at' => '2025-03-04 22:13:43',
+                'updated_at' => '2025-03-04 22:13:43',
+            ),
+            35 => 
+            array (
+                'id' => 36,
+                'name' => 'View details',
+                'key' => 'users-view-details',
+                'permission_group_id' => 2,
+                'created_at' => '2025-03-04 23:05:34',
+                'updated_at' => '2025-03-04 23:05:34',
+            ),
+            36 => 
+            array (
+                'id' => 37,
+                'name' => 'Create',
+                'key' => 'users-create',
+                'permission_group_id' => 2,
+                'created_at' => '2025-03-05 00:00:55',
+                'updated_at' => '2025-03-05 00:00:55',
+            ),
+            37 => 
+            array (
+                'id' => 40,
+                'name' => 'Edit',
+                'key' => 'users-edit',
+                'permission_group_id' => 2,
+                'created_at' => '2025-03-05 00:01:48',
+                'updated_at' => '2025-03-05 00:01:48',
+            ),
+            38 => 
+            array (
+                'id' => 41,
+                'name' => 'Delete',
+                'key' => 'users-delete',
+                'permission_group_id' => 2,
+                'created_at' => '2025-03-05 00:02:01',
+                'updated_at' => '2025-03-05 00:02:01',
+            ),
+            39 => 
+            array (
+                'id' => 43,
+                'name' => 'Access',
+                'key' => 'customers-services-access',
+                'permission_group_id' => 15,
+                'created_at' => '2025-03-05 22:41:21',
+                'updated_at' => '2025-03-05 22:41:21',
+            ),
+            40 => 
+            array (
+                'id' => 44,
+                'name' => 'Access',
+                'key' => 'customers-access',
+                'permission_group_id' => 16,
+                'created_at' => '2025-03-05 22:56:40',
+                'updated_at' => '2025-03-05 22:56:40',
+            ),
+            41 => 
+            array (
+                'id' => 45,
+                'name' => 'Create',
+                'key' => 'customers-create',
+                'permission_group_id' => 16,
+                'created_at' => '2025-03-05 23:05:43',
+                'updated_at' => '2025-03-05 23:05:43',
+            ),
+            42 => 
+            array (
+                'id' => 46,
+                'name' => 'Update',
+                'key' => 'customers-update',
+                'permission_group_id' => 16,
+                'created_at' => '2025-03-05 23:05:46',
+                'updated_at' => '2025-03-05 23:05:46',
+            ),
+            43 => 
+            array (
+                'id' => 47,
+                'name' => 'Delete',
+                'key' => 'customers-delete',
+                'permission_group_id' => 16,
+                'created_at' => '2025-03-05 23:05:48',
+                'updated_at' => '2025-03-05 23:05:48',
+            ),
         ));
         
         

@@ -12,8 +12,12 @@ class ProvinceController extends Controller
 {
     public function index()
     {
+        $query = Province::query()->get();
+        if(\request()->has('for-api')){
+            return ProvinceResource::collection($query);
+        }
         $this->allowed('branch-configurations-access');
-        return ProvinceResource::collection(Province::query()->with(['branches.branch_manager'])->get());
+        return ProvinceResource::collection($query->load(['branches.branch_manager']));
     }
 
     public function store(ProvinceRequest $request)

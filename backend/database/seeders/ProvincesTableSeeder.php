@@ -27,6 +27,14 @@ class ProvincesTableSeeder extends Seeder
                 'created_at' => '2025-03-04 00:57:56',
                 'updated_at' => '2025-03-04 00:57:56',
             ),
+            1 => 
+            array (
+                'id' => 6,
+                'name' => 'Mazar',
+                'created_by' => 1,
+                'created_at' => '2025-03-05 01:22:09',
+                'updated_at' => '2025-03-05 01:22:09',
+            ),
         ));
         
         

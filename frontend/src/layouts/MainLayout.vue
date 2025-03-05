@@ -179,21 +179,9 @@
                                 />
                             </q-breadcrumbs>
                         </div>
-                        <q-scroll-area
-                            :class="
-                                !$route.meta?.disable_layout
-                                    ? 'h-[93vh]'
-                                    : 'h-[100vh]'
-                            "
-                            :thumb-style="{
-                                right: '4px',
-                                borderRadius: '5px',
-                                width: '5px',
-                                opacity: 0.75,
-                            }"
-                        >
+                        <div>
                             <router-view />
-                        </q-scroll-area>
+                        </div>
                     </q-page-container>
                 </div>
             </q-intersection>

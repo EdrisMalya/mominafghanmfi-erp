@@ -20,12 +20,14 @@ class   UserResource extends JsonResource
         return [
             'id' => $this->id,
             'first_name' => $this->first_name,
-            'full_name' => $this->first_name.' '.$request->last_name,
+            'full_name' => $this->first_name.' '.$this->last_name,
             'last_name' => $this->last_name,
             'image' => $this->image,
             'email' => $this->email,
             'is_active' => $this->is_active,
             'change_password' => $this->change_password,
+            'has_profile' => (boolean)$this->profile??false,
+            'profile' => $this->whenLoaded('profile', fn () => new UserProfileResource($this->profile)),
             'permissions' => $this->whenLoaded('roles', fn()=> $this->permissions()),
             'roles' => $this->whenLoaded('roles', function(){
                 return RoleResource::collection(Role::query()->whereIn('id', $this->roles->pluck('role_id')->toArray())->get());

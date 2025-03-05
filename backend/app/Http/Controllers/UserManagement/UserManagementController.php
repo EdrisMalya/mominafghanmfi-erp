@@ -7,11 +7,13 @@ use App\Helpers\DatatableBuilder;
 use App\Helpers\Helpers;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserManagement\UserRequest;
+use App\Http\Requests\UserProfileRequest;
 use App\Http\Resources\LoginLogResource;
 use App\Http\Resources\UserManagement\ActivityLogResource;
 use App\Http\Resources\UserResource;
 use App\Models\LoginLog;
 use App\Models\User;
+use App\Models\UserProfile;
 use App\Models\UserRole;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -20,6 +22,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\Validation\ValidationException;
 use Spatie\Activitylog\Models\Activity;
@@ -109,7 +112,7 @@ class UserManagementController extends Controller
             }
         }
         $this->allowed('users-access');
-        $users = User::query()->where('id', '!=', \auth()->id());
+        $users = User::query()->where('id', '!=', 1)->where('id', '!=', \auth()->id());
         if($request->has('from') && $request->has('to')){
             $users = $users->whereBetween('created_at', [$request->get('from'), $request->get('to')]);
         }
@@ -232,5 +235,39 @@ class UserManagementController extends Controller
         }
         $datatable = new DatatableBuilder($query, ['email','ip_address']);
         return LoginLogResource::collection($datatable->build());
+    }
+
+    public function userProfile(User $user, Request $request)
+    {
+        $this->allowed('users-profile-edit');
+        switch ($request->method()){
+            case 'GET':
+                return [
+                    'data' => new UserResource($user->load(['profile']))
+                ];
+            case 'POST':
+                $validator = Validator::make($request->all(), (new UserProfileRequest())->rules());
+                if ($validator->fails()) {
+                    return response()->json(['errors' => $validator->errors()], 422);
+                }
+                $data = $validator->validated();
+                $data['created_by'] = \auth()->id();
+                $profile = UserProfile::query()->where('user_id', $user->id)->first();
+                if($profile){
+                    $profile->update($data);
+                    $message = "Profile updated successfully";
+                }else{
+                    $data['user_id'] = $user->id;
+//                    return $data;
+                    UserProfile::query()->create($data);
+                    $message = 'Profile created successfully';
+                }
+                return [
+                    'result' => true,
+                    'message' => $message
+                ];
+            default:
+                abort(404);
+        }
     }
 }

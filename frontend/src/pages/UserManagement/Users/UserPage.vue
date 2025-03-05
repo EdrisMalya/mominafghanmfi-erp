@@ -81,6 +81,20 @@
                                 sortable: true,
                             },
                             {
+                                label: 'Has profile',
+                                name: 'has_profile',
+                                link: '/user-management/users/:id/user-profile',
+                                conditionalClass: {
+                                    filter_field: 'has_profile',
+                                    condition: '===',
+                                    value: true,
+                                    trueClass:
+                                        'bg-green-500 px-2 text-center py-1 text-white rounded-full',
+                                    falseClass:
+                                        'bg-red-500 px-2 text-center py-1 text-white rounded-full',
+                                },
+                            },
+                            {
                                 label: 'Is active',
                                 name: 'is_active',
                                 conditionalClass: {

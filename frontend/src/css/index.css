@@ -6,7 +6,7 @@
 }
 @layer base {
     body{
-      @apply !bg-gray-100 !overflow-hidden
+      @apply !bg-gray-100
     }
     .barcode-sheet {
       display: flex;

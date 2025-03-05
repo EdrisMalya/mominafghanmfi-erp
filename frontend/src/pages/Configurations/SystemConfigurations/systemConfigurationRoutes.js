@@ -47,5 +47,26 @@ export const systemConfigurationRoutes = {
                 ],
             },
         },
+        {
+            path: 'document-formats',
+            component: () =>
+                import(
+                    'pages/Configurations/SystemConfigurations/DocumentFormatConfigurations/DocumentFormatConfigurationsPage.vue'
+                ),
+            meta: {
+                active: 'system_configurations',
+                active_tab: 'document-formats',
+                breadcrumb: [
+                    {
+                        text: 'Configurations',
+                        link: '/configurations',
+                    },
+                    {
+                        text: 'Document Formats',
+                        link: '/',
+                    },
+                ],
+            },
+        },
     ],
 }

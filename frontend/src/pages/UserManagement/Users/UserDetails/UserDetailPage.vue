@@ -29,6 +29,9 @@
                         <user-detail-activity-logs
                             v-if="$route.params.active === 'activity-log'"
                         />
+                        <user-profile
+                            v-if="$route.params.active === 'user-profile'"
+                        />
                     </user-detail-layout>
                 </div>
             </user-management-layout>
@@ -44,10 +47,12 @@ import UserDetailLayout from 'pages/UserManagement/Users/UserDetails/UserDetailL
 import UserDetailsInfo from 'pages/UserManagement/Users/UserDetails/UserDetailsInfo.vue'
 import UserDetailActivityLogs from 'pages/UserManagement/Users/UserDetails/UserDetailActivityLogs.vue'
 import { useLanguageStore } from 'stores/languageStore'
+import UserProfile from 'pages/UserManagement/Users/UserDetails/UserProfile.vue'
 
 export default defineComponent({
     nane: 'UserDetailPage',
     components: {
+        UserProfile,
         UserDetailActivityLogs,
         UserDetailsInfo,
         UserDetailLayout,

@@ -13,7 +13,7 @@
                             @update:model-value="
                                 value =>
                                     $router.push({
-                                        path: '/configurations/system-configurations/branch-configurations',
+                                        path: `/configurations/system-configurations/${value}`,
                                     })
                             "
                         >
@@ -27,12 +27,12 @@
                                 />
                             </protected-component>
                             <protected-component
-                                permission-key="system-configurations-access"
+                                permission-key="document-formats-access"
                             >
                                 <q-tab
-                                    name="movies"
-                                    icon="movie"
-                                    label="Movies"
+                                    name="document-formats"
+                                    icon="description"
+                                    :label="$translate('Document formats')"
                                 />
                             </protected-component>
                         </q-tabs>

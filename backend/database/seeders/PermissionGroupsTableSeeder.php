@@ -25,9 +25,9 @@ class PermissionGroupsTableSeeder extends Seeder
                 'name' => 'User management',
                 'icon' => 'people',
                 'permission_group_id' => 0,
-                'sort' => 0,
+                'sort' => 1,
                 'created_at' => '2024-11-16 03:05:25',
-                'updated_at' => '2024-11-16 03:05:25',
+                'updated_at' => '2025-03-05 22:47:11',
             ),
             1 => 
             array (
@@ -85,9 +85,9 @@ class PermissionGroupsTableSeeder extends Seeder
                 'name' => 'Configurations',
                 'icon' => 'settings',
                 'permission_group_id' => 0,
-                'sort' => 1,
+                'sort' => 2,
                 'created_at' => '2024-11-17 16:03:16',
-                'updated_at' => '2024-11-17 16:03:16',
+                'updated_at' => '2025-03-05 22:36:45',
             ),
             7 => 
             array (
@@ -138,6 +138,36 @@ class PermissionGroupsTableSeeder extends Seeder
                 'sort' => 0,
                 'created_at' => '2025-03-03 20:39:14',
                 'updated_at' => '2025-03-03 20:39:14',
+            ),
+            12 => 
+            array (
+                'id' => 13,
+                'name' => 'Document formats',
+                'icon' => NULL,
+                'permission_group_id' => 11,
+                'sort' => 1,
+                'created_at' => '2025-03-04 21:17:37',
+                'updated_at' => '2025-03-04 21:17:37',
+            ),
+            13 => 
+            array (
+                'id' => 15,
+                'name' => 'Customers services',
+                'icon' => 'groups',
+                'permission_group_id' => 0,
+                'sort' => 0,
+                'created_at' => '2025-03-05 22:36:43',
+                'updated_at' => '2025-03-05 22:47:11',
+            ),
+            14 => 
+            array (
+                'id' => 16,
+                'name' => 'Customers',
+                'icon' => NULL,
+                'permission_group_id' => 15,
+                'sort' => 0,
+                'created_at' => '2025-03-05 22:56:34',
+                'updated_at' => '2025-03-05 22:56:34',
             ),
         ));
         

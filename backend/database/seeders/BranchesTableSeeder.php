@@ -23,16 +23,16 @@ class BranchesTableSeeder extends Seeder
             array (
                 'id' => 7,
                 'province_id' => 5,
-                'name' => 'Tatyana Bartlett',
-                'location' => 'Sybill Macdonald',
-                'phone_number' => 'Bernard Lane',
-                'email' => 'xaxetiluty@mailinator.com',
-                'branch_manager_id' => 2,
+                'name' => 'Kabul main branch',
+                'location' => 'Kart-e 4',
+                'phone_number' => '07885454855',
+                'email' => 'main@mominafghanmfi.af',
+                'branch_manager_id' => 3,
                 'is_main' => '1',
                 'status' => '1',
-                'created_by' => 2,
+                'created_by' => 1,
                 'created_at' => '2025-03-04 00:58:06',
-                'updated_at' => '2025-03-04 00:58:06',
+                'updated_at' => '2025-03-05 15:13:29',
             ),
             1 => 
             array (

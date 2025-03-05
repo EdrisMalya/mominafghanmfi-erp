@@ -19,6 +19,26 @@
                     <div>{{ translate('User info') }}</div>
                 </div>
             </router-link>
+            <protected-component permission-key="users-profile-edit">
+                <router-link
+                    :to="
+                        appRoutes.user_management.users.details.path
+                            .replace(':id', route.params.id)
+                            .replace(':active', 'user-profile')
+                    "
+                >
+                    <div
+                        class="flex items-center space-x-1 pb-2 rtl:mx-2"
+                        :class="
+                            route.params.active === 'user-profile' &&
+                            'border-blue-600 border-b-2 text-blue-600'
+                        "
+                    >
+                        <q-icon name="person" class="text-lg px-1" />
+                        <div>{{ translate('User profile') }}</div>
+                    </div>
+                </router-link>
+            </protected-component>
             <protected-component permission-key="log-activity-access">
                 <router-link
                     :to="
@@ -62,8 +82,12 @@ export default defineComponent({
         watch(
             () => route.params,
             newValue => {
-                if (!['info', 'activity-log'].includes(newValue.active)) {
-                    router.push({ path: '/404' })
+                if (
+                    !['info', 'activity-log', 'user-profile'].includes(
+                        newValue.active,
+                    )
+                ) {
+                    // router.push({ path: '/404' })
                 }
             },
         )
