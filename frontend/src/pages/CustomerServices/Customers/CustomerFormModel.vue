@@ -1,6 +1,6 @@
 <template>
     <q-dialog :model-value="true" persistent>
-        <q-card class="min-w-[600px]">
+        <q-card class="min-w-[700px]">
             <q-card-section class="text-lg border-b">
                 <p>{{ $translate('Customer Form') }}</p>
             </q-card-section>
@@ -11,16 +11,52 @@
                     v-slot="{ data }"
                 >
                     <form-builder-component
-                        class-name="grid grid-cols-2 gap-x-3"
-                        submit-area-class-name="mt-5 col-span-2 border-t pt-4"
+                        class-name="grid grid-cols-3 gap-x-3"
+                        submit-area-class-name="mt-5 col-span-3 border-t pt-4"
                         :action="`${
                             customerId === 0
-                                ? 'customer-management/customers'
-                                : `customer-management/customers/${customerId}`
+                                ? 'customer-management/customers?_method=POST'
+                                : `customer-management/customers/${customerId}?_method=PUT`
                         }`"
                         :on-submit-completed="onSuccess"
-                        :method="customerId === 0 ? 'POST' : 'PUT'"
+                        method="POST"
                         :fields="[
+                            {
+                                label: 'Customer photo',
+                                name: 'photo',
+                                value: null,
+                                photo_url: data?.photo?.url ?? null,
+                                type: 'file',
+                                accept: 'image/*',
+                                validation: yup
+                                    .mixed()
+                                    .when('test', (test, schema) => {
+                                        if (!data) {
+                                            return schema.required(
+                                                'Photo is required',
+                                            )
+                                        }
+                                        return schema.nullable()
+                                    }),
+                            },
+                            {
+                                label: 'NIC copy',
+                                name: 'nic_copy',
+                                value: null,
+                                type: 'file',
+                                photo_url: data?.nic_copy?.url,
+                                accept: 'image/*',
+                                validation: yup
+                                    .mixed()
+                                    .when('form', (form, schema) => {
+                                        if (!data) {
+                                            return schema.required(
+                                                'NIC copy is required',
+                                            )
+                                        }
+                                        return schema.nullable()
+                                    }),
+                            },
                             {
                                 label: 'First name',
                                 name: 'first_name',
@@ -43,11 +79,26 @@
                                 validation: yup.string().required(),
                             },
                             {
+                                label: 'Date of birth',
+                                name: 'dob',
+                                value: data?.dob,
+                                type: 'datepicker',
+                                validation: yup.string().required(),
+                            },
+                            {
                                 label: 'NIC number',
                                 name: 'nic_number',
                                 value: data?.nic_number,
                                 type: 'text',
                                 validation: yup.string().required(),
+                            },
+
+                            {
+                                label: 'Permanent address information ',
+                                name: 'empty',
+                                type: 'div',
+                                className: 'col-span-3',
+                                div_class: 'text-center py-5 font-bold',
                             },
                             {
                                 label: 'Province',
@@ -61,14 +112,14 @@
                             {
                                 label: 'District',
                                 name: 'district',
-                                value: data?.nic_number,
+                                value: data?.district,
                                 type: 'text',
                                 validation: yup.string().required(),
                             },
                             {
                                 label: 'Village',
                                 name: 'village',
-                                value: data?.nic_number,
+                                value: data?.village,
                                 type: 'text',
                                 validation: yup.string().required(),
                             },

@@ -415,6 +415,87 @@ class PermissionsTableSeeder extends Seeder
                 'created_at' => '2025-03-05 23:05:48',
                 'updated_at' => '2025-03-05 23:05:48',
             ),
+            44 => 
+            array (
+                'id' => 49,
+                'name' => 'Update system configurations',
+                'key' => 'system-configurations-update-system-configurations',
+                'permission_group_id' => 11,
+                'created_at' => '2025-03-06 15:56:27',
+                'updated_at' => '2025-03-06 15:56:27',
+            ),
+            45 => 
+            array (
+                'id' => 50,
+                'name' => 'Access',
+                'key' => 'financing-modes-configurations-access',
+                'permission_group_id' => 17,
+                'created_at' => '2025-03-06 16:39:53',
+                'updated_at' => '2025-03-06 16:39:53',
+            ),
+            46 => 
+            array (
+                'id' => 51,
+                'name' => 'Create',
+                'key' => 'financing-modes-configurations-create',
+                'permission_group_id' => 17,
+                'created_at' => '2025-03-06 21:52:25',
+                'updated_at' => '2025-03-06 21:52:25',
+            ),
+            47 => 
+            array (
+                'id' => 52,
+                'name' => 'Update',
+                'key' => 'financing-modes-configurations-update',
+                'permission_group_id' => 17,
+                'created_at' => '2025-03-06 21:52:33',
+                'updated_at' => '2025-03-06 21:52:33',
+            ),
+            48 => 
+            array (
+                'id' => 53,
+                'name' => 'Delete',
+                'key' => 'financing-modes-configurations-delete',
+                'permission_group_id' => 17,
+                'created_at' => '2025-03-06 21:52:36',
+                'updated_at' => '2025-03-06 21:52:36',
+            ),
+            49 => 
+            array (
+                'id' => 54,
+                'name' => 'Update configurations',
+                'key' => 'financing-modes-configurations-update-configurations',
+                'permission_group_id' => 17,
+                'created_at' => '2025-03-06 23:06:03',
+                'updated_at' => '2025-03-06 23:06:03',
+            ),
+            50 => 
+            array (
+                'id' => 55,
+                'name' => 'Access',
+                'key' => 'financing-mode-access',
+                'permission_group_id' => 18,
+                'created_at' => '2025-03-08 22:06:07',
+                'updated_at' => '2025-03-08 22:06:07',
+            ),
+            51 => 
+            array (
+                'id' => 56,
+                'name' => 'Access',
+                'key' => 'murabeha-access',
+                'permission_group_id' => 19,
+                'created_at' => '2025-03-08 22:28:47',
+                'updated_at' => '2025-03-08 22:28:47',
+            ),
+            52 => 
+            array (
+                'id' => 57,
+                'name' => 'Add new request',
+                'key' => 'murabeha-add-new-request',
+                'permission_group_id' => 19,
+                'created_at' => '2025-03-08 22:55:29',
+                'updated_at' => '2025-03-08 22:55:29',
+            ),
         ));
         
         

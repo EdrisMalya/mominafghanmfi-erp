@@ -28,6 +28,7 @@
                             name: 'id',
                             label: 'ID',
                             sortable: true,
+                            link: '/customers-services/customers/:id',
                         },
                         {
                             name: 'first_name',
@@ -47,6 +48,19 @@
                         {
                             name: 'status',
                             label: 'Status',
+                            sortable: true,
+                            cellColor: data => {
+                                switch (data.status) {
+                                    case 'deleted':
+                                        return 'text-white bg-red-600 px-2 py-1 rounded-full shadow'
+                                    case 'active':
+                                        return 'text-white bg-green-600 px-2 py-1 rounded-full shadow'
+                                }
+                            },
+                        },
+                        {
+                            name: 'dob',
+                            label: 'DOB',
                             sortable: true,
                         },
                         {

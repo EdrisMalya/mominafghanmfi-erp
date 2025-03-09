@@ -35,5 +35,10 @@ class DatabaseSeeder extends Seeder
         $this->call(UserProfilesTableSeeder::class);
         $this->call(CountryProvincesTableSeeder::class);
         $this->call(CustomersTableSeeder::class);
+        $this->call(SystemConfigurationsTableSeeder::class);
+        $this->call(FinancingModesTableSeeder::class);
+        $this->call(FilesTableSeeder::class);
+        $this->call(FinanceModeRequestStepsTableSeeder::class);
+        $this->call(RequestStepFieldsTableSeeder::class);
     }
 }

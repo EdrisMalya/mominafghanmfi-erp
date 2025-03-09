@@ -25,4 +25,11 @@ class {{ class }} extends FormRequest
             //
         ];
     }
+
+    public function validatedData()
+    {
+        $rules = $this->validated();
+        $rules['created_by'] = auth()->id();
+        return $rules;
+    }
 }

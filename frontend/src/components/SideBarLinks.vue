@@ -6,12 +6,21 @@
             to="/"
             :active="generalStore.active_page === 'home'"
         />
+
         <protected-component permission-key="customers-services-access">
             <SidebarLink
                 icon="groups"
                 :name="$translate('Customers services')"
                 to="/customers-services"
                 :active="$route.meta.active === 'customer-services'"
+            />
+        </protected-component>
+        <protected-component permission-key="financing-mode-access">
+            <SidebarLink
+                icon="payment"
+                :name="$translate('Financing mode')"
+                to="/financing-mode"
+                :active="$route.meta.active === 'financing-mode'"
             />
         </protected-component>
         <protected-component permission-key="user-management-access">

@@ -13,12 +13,12 @@
         <span v-else> {{ $translate('Something went wrong') }} </span>
     </div>
     <div v-else>
-        <p
+        <slot
             v-if="data?.length < 1 && !ignoreNull && fetchData"
-            class="text-red-500 text-center py-12"
+            name="not-data"
         >
-            No data found
-        </p>
+            <p class="text-red-500 text-center py-12">No data found</p>
+        </slot>
         <q-intersection v-else transition="scale">
             <slot :data="data" />
         </q-intersection>

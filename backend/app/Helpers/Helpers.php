@@ -24,6 +24,12 @@ use Illuminate\Support\Facades\File;
         }
         return round($bytes, 2) . ' ' . $units[$i];
     }
+
+    public static function fileExt($file_name)
+    {
+        $file_name_array = explode('.', $file_name);
+        return end($file_name_array);
+    }
     public static function filterByDates($query, $field_name='created_at'){
         $date = request()->get('date');
         $from_date = request()->get('from_date');
@@ -76,4 +82,44 @@ use Illuminate\Support\Facades\File;
 
         return $query;
     }
+    public static function storeFile($file, $relation_id, $relation_type, $folder_prepend='')
+    {
+        $file_path = $file->store($relation_type.'/'.$relation_id.'/'.$folder_prepend, 'public');
+        return \App\Models\File::query()->create([
+            'relation_id' => $relation_id,
+            'relation_type' => $relation_type,
+            'file_path' => $file_path,
+            'folder_prepend' => $folder_prepend,
+            'file_url' => asset('storage/'.$file_path),
+            'file_size' => $file->getSize(),
+            'file_name' => $file->getClientOriginalName(),
+            'created_by' => auth()->id()
+        ]);
+    }
+
+    public static function removeFile($relation_id, $relation_type, $folder_prepend)
+    {
+        $exitsFile = \App\Models\File::query()
+            ->where('relation_id', $relation_id)
+            ->where('folder_prepend', $folder_prepend)
+            ->where('relation_type', $relation_type)->first();
+        if($exitsFile){
+            static::removeImageFromUrl($exitsFile->file_url);
+            $exitsFile->delete();
+        }
+    }
+    public static function uploadFile($file, $relation_id, $relation_type, $folder_prepend='', $replace= false)
+    {
+        if($file != null){
+            if($replace){
+                static::removeFile($relation_id, $relation_type, $folder_prepend);
+                static::storeFile($file, $relation_id, $relation_type, $folder_prepend);
+            }
+            else{
+                static::storeFile($file, $relation_id, $relation_type, $folder_prepend);
+            }
+        }
+    }
+
+
 }

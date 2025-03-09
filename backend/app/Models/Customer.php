@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
+use App\Http\Resources\FileResource;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Carbon;
 use Spatie\Activitylog\LogOptions;
 use Spatie\Activitylog\Traits\CausesActivity;
@@ -42,5 +44,20 @@ class Customer extends Model
     public function created_by_user() : BelongsTo
     {
         return $this->belongsTo(User::class, 'created_by');
+    }
+
+    public function photo() : HasOne
+    {
+        return $this->hasOne(File::class, 'relation_id')->where('relation_type', 'customer_files')->where('folder_prepend', 'photo');
+    }
+
+    public function nic_copy() : HasOne
+    {
+        return $this->hasOne(File::class, 'relation_id')->where('relation_type', 'customer_files')->where('folder_prepend', 'nic_copy');
+    }
+
+    public function province() : BelongsTo
+    {
+        return $this->belongsTo(CountryProvince::class, 'province_id');
     }
 }

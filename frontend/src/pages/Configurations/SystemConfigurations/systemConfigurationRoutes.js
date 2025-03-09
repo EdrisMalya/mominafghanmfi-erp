@@ -68,5 +68,26 @@ export const systemConfigurationRoutes = {
                 ],
             },
         },
+        {
+            path: 'financing-modes-configurations',
+            component: () =>
+                import(
+                    'pages/Configurations/SystemConfigurations/FinancingModeConfigurations/FinancingModeConfigurationsPage.vue'
+                ),
+            meta: {
+                active: 'system_configurations',
+                active_tab: 'financing-modes-configurations',
+                breadcrumb: [
+                    {
+                        text: 'Configurations',
+                        link: '/configurations',
+                    },
+                    {
+                        text: 'Document Formats',
+                        link: '/',
+                    },
+                ],
+            },
+        },
     ],
 }

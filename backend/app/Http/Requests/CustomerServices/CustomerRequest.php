@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\CustomerServices;
 
+use App\Rules\CheckAgeForFinancing;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -23,6 +24,8 @@ class CustomerRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'photo' => [$this->method() == 'GET'? 'required': 'nullable', 'file', 'image', 'max:2000'],
+            'nic_copy' => [$this->method() == 'GET'? 'required': 'nullable', 'file', 'max:2000'],
             'first_name' => ['required', 'string', 'min:1', 'max:255'],
             'last_name' => ['required', 'string', 'min:1', 'max:255'],
             'father_name' => ['required', 'string', 'min:1', 'max:255'],
@@ -30,6 +33,7 @@ class CustomerRequest extends FormRequest
             'district' => ['required', 'string', 'min:1', 'max:255'],
             'village' => ['required', 'string', 'min:1', 'max:255'],
             'province_id' => ['int', 'required'],
+            'dob' => ['string', 'date', 'required', new CheckAgeForFinancing],
             'status' => ['sometimes', Rule::requiredIf(fn()=>$this->method()=='PUT'), Rule::in(['active', 'inactive', 'block'])],
         ];
     }
@@ -39,6 +43,8 @@ class CustomerRequest extends FormRequest
         $data = $this->validated();
         $data['created_by'] = auth()->id();
         $data['status'] = $this->method() == 'GET' ? 'active' : ($data['status'] ?? 'active');
+        unset($data['photo']);
+        unset($data['nic_copy']);
         return $data;
 
     }

@@ -12,7 +12,7 @@
         dense
         outlined
         :label="label"
-        :input-debounce="0"
+        :input-debounce="serverSearchAble ? 300 : 0"
         :multiple="multiple ?? false"
         :use-chips="multiple ?? false"
         :error-message="errorMessage?.replaceAll('_', ' ')"
@@ -42,6 +42,7 @@
 import { defineComponent, ref, watch } from 'vue'
 import { resolve } from 'src/lib/helpers'
 import { useGeneralStore } from 'stores/generalStore'
+import * as url from 'node:url'
 
 export default defineComponent({
     setup() {
@@ -80,6 +81,7 @@ export default defineComponent({
         'findFromId',
         'onCreate',
         'selectId',
+        'serverSearchAble',
     ],
     data() {
         return {
@@ -91,10 +93,14 @@ export default defineComponent({
         }
     },
     methods: {
-        async fetchData() {
+        async fetchData(query = null) {
             this.loading = true
             try {
-                const result = await this.$api.get(this.url)
+                let api = this.url
+                if (query !== null) {
+                    api += '&query=' + query
+                }
+                const result = await this.$api.get(api)
                 if (this.fromResource) {
                     this.options = result.data.data
                     this.options_copy = result.data.data
@@ -146,6 +152,9 @@ export default defineComponent({
                 update(() => {
                     this.options = this.options_copy
                 })
+                if (this.serverSearchAble) {
+                    this.fetchData(null)
+                }
                 return
             } else {
                 const newValue = val.toLowerCase()
@@ -174,12 +183,14 @@ export default defineComponent({
                         }
                     },
                 )
+                if (this.serverSearchAble) {
+                    this.fetchData(newValue)
+                }
             }
         },
     },
     mounted() {
         this.fetchData()
-        console.log('Test')
     },
     watch: {
         revalidateValue(newValue) {

@@ -35,6 +35,15 @@
                                     :label="$translate('Document formats')"
                                 />
                             </protected-component>
+                            <protected-component
+                                permission-key="financing-modes-configurations-access"
+                            >
+                                <q-tab
+                                    name="financing-modes-configurations"
+                                    icon="payments"
+                                    :label="$translate('Financing mode')"
+                                />
+                            </protected-component>
                         </q-tabs>
                     </template>
 

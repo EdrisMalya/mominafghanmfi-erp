@@ -15,6 +15,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth:sanctum'])->group(function(){
 
+    Route::group(['prefix' => 'financing-mode', 'middleware' => ['checkEmployeeProfile']], function (){
+        Route::group(['prefix' => 'murabeha'], function (){
+            Route::post('steps-progress/{step}/{request_id?}', [\App\Http\Controllers\FinanceMode\MurabehaController::class, 'processStep']);
+            Route::get('steps-request/{request}/', [\App\Http\Controllers\FinanceMode\MurabehaController::class, 'getStepRequest']);
+        });
+    });
+
     Route::group(['prefix' => 'general'], function (){
        Route::get('country-provinces', [\App\Http\Controllers\GeneralController::class, 'countryProvinces']);
     });
@@ -53,6 +60,12 @@ Route::middleware(['auth:sanctum'])->group(function(){
         Route::group(['prefix' => 'system-configurations'], function (){
             Route::resource('branch-province', \App\Http\Controllers\Configurations\SystemConfigurations\ProvinceController::class);
             Route::resource('branch', \App\Http\Controllers\Configurations\SystemConfigurations\BranchController::class);
+            Route::resource('financing-mode', \App\Http\Controllers\Configurations\SystemConfigurations\FinancingModeController::class);
+
+            Route::get('financing-mode-step-configurations/{financing_mode}', [\App\Http\Controllers\Configurations\SystemConfigurations\FinancingModeController::class, 'financingModeStepConfigurations']);
+            Route::post('financing-mode-step-configurations', [\App\Http\Controllers\Configurations\SystemConfigurations\FinancingModeController::class, 'stepConfigurations']);
+
+            Route::match(['GET', 'POST'], '', [\App\Http\Controllers\Configurations\SystemConfigurations\SystemConfigurationsController::class, 'config']);
         });
 
         Route::resource('languages', \App\Http\Controllers\Configurations\LanguagesController::class);

@@ -239,6 +239,182 @@ class LoginLogsTableSeeder extends Seeder
                 'created_at' => '2025-03-05 22:56:17',
                 'updated_at' => '2025-03-05 22:56:17',
             ),
+            20 => 
+            array (
+                'id' => 21,
+                'email' => 'adrismalya@gmail.com',
+                'ip_address' => '127.0.0.1',
+                'login_succeed' => 1,
+                'login_token' => '11|fqeIJgy5eXNhAxVcyOGROdrvkR0UWE408efzucha',
+                'message' => 'Logged in successfully.',
+                'created_at' => '2025-03-06 15:39:23',
+                'updated_at' => '2025-03-06 15:39:23',
+            ),
+            21 => 
+            array (
+                'id' => 22,
+                'email' => 'edris.malya@dab.gov.af',
+                'ip_address' => '127.0.0.1',
+                'login_succeed' => 1,
+                'login_token' => '12|CsThaO8JFwMgQwFE4fARG293INsPDfuOMpXlvoFK',
+                'message' => 'Logged in successfully.',
+                'created_at' => '2025-03-06 15:40:14',
+                'updated_at' => '2025-03-06 15:40:14',
+            ),
+            22 => 
+            array (
+                'id' => 23,
+                'email' => 'financing-recovery-officer@mominafghanmfi.af',
+                'ip_address' => '127.0.0.1',
+                'login_succeed' => 0,
+                'login_token' => NULL,
+                'message' => 'The provided credentials are incorrect.',
+                'created_at' => '2025-03-06 15:40:49',
+                'updated_at' => '2025-03-06 15:40:49',
+            ),
+            23 => 
+            array (
+                'id' => 24,
+                'email' => 'financing-recovery-officer@mominafghanmfi.af',
+                'ip_address' => '127.0.0.1',
+                'login_succeed' => 1,
+                'login_token' => '13|iCjlQIDGlz6foYSqWwZKcBAMcHqEwb1ZmbImBU89',
+                'message' => 'Logged in successfully.',
+                'created_at' => '2025-03-06 15:40:52',
+                'updated_at' => '2025-03-06 15:40:52',
+            ),
+            24 => 
+            array (
+                'id' => 25,
+                'email' => 'adrismalya@gmail.com',
+                'ip_address' => '127.0.0.1',
+                'login_succeed' => 1,
+                'login_token' => '14|5adpaxydHqgA8G6GXmiSEwCZ9FoHXmuxlA1x24lp',
+                'message' => 'Logged in successfully.',
+                'created_at' => '2025-03-06 15:54:14',
+                'updated_at' => '2025-03-06 15:54:14',
+            ),
+            25 => 
+            array (
+                'id' => 26,
+                'email' => 'adrismalya@gmail.com',
+                'ip_address' => '127.0.0.1',
+                'login_succeed' => 0,
+                'login_token' => NULL,
+                'message' => 'The provided credentials are incorrect.',
+                'created_at' => '2025-03-07 03:06:28',
+                'updated_at' => '2025-03-07 03:06:28',
+            ),
+            26 => 
+            array (
+                'id' => 27,
+                'email' => 'adrismalya@gmail.com',
+                'ip_address' => '127.0.0.1',
+                'login_succeed' => 0,
+                'login_token' => NULL,
+                'message' => 'The provided credentials are incorrect.',
+                'created_at' => '2025-03-07 03:06:31',
+                'updated_at' => '2025-03-07 03:06:31',
+            ),
+            27 => 
+            array (
+                'id' => 28,
+                'email' => 'adrismalya@gmail.com',
+                'ip_address' => '127.0.0.1',
+                'login_succeed' => 1,
+                'login_token' => '15|icBo5AkfDOhgxUhWI5mgW2xc7ZEpwTbC2EK4xgQe',
+                'message' => 'Logged in successfully.',
+                'created_at' => '2025-03-07 03:06:44',
+                'updated_at' => '2025-03-07 03:06:44',
+            ),
+            28 => 
+            array (
+                'id' => 29,
+                'email' => 'edris.malya@dab.gov.af',
+                'ip_address' => '127.0.0.1',
+                'login_succeed' => 0,
+                'login_token' => NULL,
+                'message' => 'The provided credentials are incorrect.',
+                'created_at' => '2025-03-07 22:14:47',
+                'updated_at' => '2025-03-07 22:14:47',
+            ),
+            29 => 
+            array (
+                'id' => 30,
+                'email' => 'edris.malya@dab.gov.af',
+                'ip_address' => '127.0.0.1',
+                'login_succeed' => 1,
+                'login_token' => '16|AslhTiYhVNV107dgYN4oWpI4CLszhXe4yLCuKrLi',
+                'message' => 'Logged in successfully.',
+                'created_at' => '2025-03-07 22:14:50',
+                'updated_at' => '2025-03-07 22:14:50',
+            ),
+            30 => 
+            array (
+                'id' => 31,
+                'email' => 'adirsmalya@gmail.com',
+                'ip_address' => '127.0.0.1',
+                'login_succeed' => 0,
+                'login_token' => NULL,
+                'message' => 'The provided credentials are incorrect.',
+                'created_at' => '2025-03-08 21:49:49',
+                'updated_at' => '2025-03-08 21:49:49',
+            ),
+            31 => 
+            array (
+                'id' => 32,
+                'email' => 'adirsmalya@gmail.com',
+                'ip_address' => '127.0.0.1',
+                'login_succeed' => 0,
+                'login_token' => NULL,
+                'message' => 'The provided credentials are incorrect.',
+                'created_at' => '2025-03-08 21:50:37',
+                'updated_at' => '2025-03-08 21:50:37',
+            ),
+            32 => 
+            array (
+                'id' => 33,
+                'email' => 'adrismalya@gmail.com',
+                'ip_address' => '127.0.0.1',
+                'login_succeed' => 1,
+                'login_token' => '17|ttHddjqNm3tayYSHCVxinratl0Qh5joVNw0fcR2g',
+                'message' => 'Logged in successfully.',
+                'created_at' => '2025-03-08 21:50:45',
+                'updated_at' => '2025-03-08 21:50:45',
+            ),
+            33 => 
+            array (
+                'id' => 34,
+                'email' => 'edris.malya@dab.gov.af',
+                'ip_address' => '127.0.0.1',
+                'login_succeed' => 0,
+                'login_token' => NULL,
+                'message' => 'The provided credentials are incorrect.',
+                'created_at' => '2025-03-08 21:51:11',
+                'updated_at' => '2025-03-08 21:51:11',
+            ),
+            34 => 
+            array (
+                'id' => 35,
+                'email' => 'edris.malya@dab.gov.af',
+                'ip_address' => '127.0.0.1',
+                'login_succeed' => 1,
+                'login_token' => '18|xu1diW7ZO5CS9g7xbl6oJfMCXppeqYU9Q5esWTGX',
+                'message' => 'Logged in successfully.',
+                'created_at' => '2025-03-08 21:51:25',
+                'updated_at' => '2025-03-08 21:51:25',
+            ),
+            35 => 
+            array (
+                'id' => 36,
+                'email' => 'financing-recovery-officer@mominafghanmfi.af',
+                'ip_address' => '127.0.0.1',
+                'login_succeed' => 1,
+                'login_token' => '19|WqMihdRehGajESnfanKLrc34FsMVfV8nMfjQZwyG',
+                'message' => 'Logged in successfully.',
+                'created_at' => '2025-03-08 22:09:30',
+                'updated_at' => '2025-03-08 22:09:30',
+            ),
         ));
         
         

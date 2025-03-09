@@ -25,9 +25,9 @@ class PermissionGroupsTableSeeder extends Seeder
                 'name' => 'User management',
                 'icon' => 'people',
                 'permission_group_id' => 0,
-                'sort' => 1,
+                'sort' => 3,
                 'created_at' => '2024-11-16 03:05:25',
-                'updated_at' => '2025-03-05 22:47:11',
+                'updated_at' => '2025-03-08 22:06:01',
             ),
             1 => 
             array (
@@ -168,6 +168,36 @@ class PermissionGroupsTableSeeder extends Seeder
                 'sort' => 0,
                 'created_at' => '2025-03-05 22:56:34',
                 'updated_at' => '2025-03-05 22:56:34',
+            ),
+            15 => 
+            array (
+                'id' => 17,
+                'name' => 'Financing Modes Configurations',
+                'icon' => NULL,
+                'permission_group_id' => 11,
+                'sort' => 2,
+                'created_at' => '2025-03-06 16:39:47',
+                'updated_at' => '2025-03-06 16:39:47',
+            ),
+            16 => 
+            array (
+                'id' => 18,
+                'name' => 'Financing mode',
+                'icon' => 'payments',
+                'permission_group_id' => 0,
+                'sort' => 1,
+                'created_at' => '2025-03-08 22:05:57',
+                'updated_at' => '2025-03-08 22:06:01',
+            ),
+            17 => 
+            array (
+                'id' => 19,
+                'name' => 'Murabeha',
+                'icon' => NULL,
+                'permission_group_id' => 18,
+                'sort' => 0,
+                'created_at' => '2025-03-08 22:28:40',
+                'updated_at' => '2025-03-08 22:28:40',
             ),
         ));
         

@@ -1,5 +1,6 @@
 <template>
     <slot v-if="show" />
+    <slot name="else" v-else />
 </template>
 <script>
 import { defineComponent } from 'vue'

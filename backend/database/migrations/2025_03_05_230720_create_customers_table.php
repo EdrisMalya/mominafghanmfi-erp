@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->string('father_name');
+            $table->string('dob');
             $table->string('nic_number');
             $table->unsignedInteger('province_id');
             $table->string('district');

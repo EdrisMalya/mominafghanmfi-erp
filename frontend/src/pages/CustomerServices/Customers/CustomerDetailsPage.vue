@@ -1,20 +1,18 @@
 <template>
     <protected-component permission-key="customers-access" is-page>
         <q-intersection transition="jump-right">
-            <server-data
-                :url="`customer-management/customers/${$route.params.id}`"
-                v-slot="{ data }"
-            >
-                <p>{{ data?.full_name }} customer details</p>
-            </server-data>
+            <customer-details-component
+                :show-request-btn="true"
+                :customer-id="$route.params.id"
+            />
         </q-intersection>
     </protected-component>
 </template>
 <script>
 import ProtectedComponent from 'components/ProtectedComponent.vue'
-import ServerData from 'components/ServerData.vue'
+import CustomerDetailsComponent from 'components/CustomerDetailsComponent.vue'
 
 export default {
-    components: { ServerData, ProtectedComponent },
+    components: { CustomerDetailsComponent, ProtectedComponent },
 }
 </script>
