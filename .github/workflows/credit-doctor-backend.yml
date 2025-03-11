@@ -33,3 +33,4 @@ jobs:
 
           docker run -d -p 3000:80 --name mis-frontend --restart=always mis:frontend
           docker run -d -p 8000:80 --name core-backend --restart=always --network mysql-network -v /home/volumes/mominafghanmfi-mis:/var/www/storage mis:core-backend
+          docker exec -it core-backend php artisan storage:link
