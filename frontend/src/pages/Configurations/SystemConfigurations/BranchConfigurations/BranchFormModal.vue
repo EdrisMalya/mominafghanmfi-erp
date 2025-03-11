@@ -1,5 +1,5 @@
 <template>
-    <q-dialog :model-value="true" persistent>
+    <q-dialog :dir="$localization.direction" :model-value="true" persistent>
         <q-card class="min-w-[600px]">
             <validation-form :validation-schema="schema" @submit="handleSubmit">
                 <q-card-section class="text-lg border-b">

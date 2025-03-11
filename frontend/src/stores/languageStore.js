@@ -58,6 +58,7 @@ export const useLanguageStore = defineStore('languageStore', {
             }
         },
         async setLanguage(lang, direction) {
+            console.log(direction)
             this.selected_language = lang
             localStorage.setItem('lang', lang)
             this.direction = direction

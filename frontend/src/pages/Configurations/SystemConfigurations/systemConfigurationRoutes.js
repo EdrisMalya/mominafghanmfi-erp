@@ -89,5 +89,26 @@ export const systemConfigurationRoutes = {
                 ],
             },
         },
+        {
+            path: 'asset-types',
+            component: () =>
+                import(
+                    'pages/Configurations/SystemConfigurations/AssetTypesPage.vue'
+                ),
+            meta: {
+                active: 'system_configurations',
+                active_tab: 'asset-types',
+                breadcrumb: [
+                    {
+                        text: 'Configurations',
+                        link: '/configurations',
+                    },
+                    {
+                        text: 'Asset types',
+                        link: '/',
+                    },
+                ],
+            },
+        },
     ],
 }

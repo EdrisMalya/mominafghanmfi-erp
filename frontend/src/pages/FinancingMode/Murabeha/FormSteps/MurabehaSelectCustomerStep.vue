@@ -3,16 +3,16 @@
         :name="1"
         :title="
             completedSteps.includes(1)
-                ? $translate('[customer_full_name] is selected ', {
+                ? $translate('[customer_full_name] is selected', {
                       customer_full_name:
                           serverRequest?.step_1?.customer.full_name,
                   })
-                : $translate('Select the customer')
+                : $translate('Customer select step')
         "
         icon="settings"
         :done="done || completedSteps.includes(1)"
         :error="!!errorMessage"
-        :caption="errorMessage"
+        :caption="$translate(errorMessage)"
         active-icon="person"
         done-color="green"
         :disable="false"

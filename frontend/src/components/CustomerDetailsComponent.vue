@@ -57,7 +57,7 @@
                     </div>
                     <q-input
                         :label="$translate('Province')"
-                        :model-value="data.province?.name"
+                        :model-value="$translate(data.province?.name)"
                         disable
                     />
                     <q-input

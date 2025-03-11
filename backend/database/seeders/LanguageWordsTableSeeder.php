@@ -1333,6 +1333,402 @@ class LanguageWordsTableSeeder extends Seeder
                 'created_at' => '2024-04-18 16:13:31',
                 'updated_at' => '2024-04-18 16:13:31',
             ),
+            146 => 
+            array (
+                'id' => 152,
+                'language_id' => 1,
+                'word' => 'Customers services',
+                'translation' => 'خدمات مشتریان',
+                'created_at' => '2025-03-11 23:47:11',
+                'updated_at' => '2025-03-11 23:47:11',
+            ),
+            147 => 
+            array (
+                'id' => 153,
+                'language_id' => 1,
+                'word' => 'Customers',
+                'translation' => 'مشتریان',
+                'created_at' => '2025-03-11 23:48:21',
+                'updated_at' => '2025-03-11 23:53:18',
+            ),
+            148 => 
+            array (
+                'id' => 154,
+                'language_id' => 1,
+                'word' => 'Our customers',
+                'translation' => 'مشتریان ما',
+                'created_at' => '2025-03-11 23:52:53',
+                'updated_at' => '2025-03-11 23:52:53',
+            ),
+            149 => 
+            array (
+                'id' => 155,
+                'language_id' => 1,
+                'word' => 'Customer services',
+                'translation' => 'خدمات مشتریان',
+                'created_at' => '2025-03-11 23:53:31',
+                'updated_at' => '2025-03-11 23:53:31',
+            ),
+            150 => 
+            array (
+                'id' => 156,
+                'language_id' => 1,
+                'word' => 'Add new customer',
+                'translation' => 'اضافه کردن مشتری جدید',
+                'created_at' => '2025-03-11 23:53:57',
+                'updated_at' => '2025-03-11 23:54:17',
+            ),
+            151 => 
+            array (
+                'id' => 157,
+                'language_id' => 1,
+                'word' => 'First name',
+                'translation' => 'اسم',
+                'created_at' => '2025-03-11 23:54:41',
+                'updated_at' => '2025-03-11 23:54:41',
+            ),
+            152 => 
+            array (
+                'id' => 158,
+                'language_id' => 1,
+                'word' => 'Last name',
+                'translation' => 'تحلص',
+                'created_at' => '2025-03-11 23:54:48',
+                'updated_at' => '2025-03-11 23:54:48',
+            ),
+            153 => 
+            array (
+                'id' => 159,
+                'language_id' => 1,
+                'word' => 'NIC number',
+                'translation' => 'نمبر تذکره',
+                'created_at' => '2025-03-11 23:55:00',
+                'updated_at' => '2025-03-11 23:55:00',
+            ),
+            154 => 
+            array (
+                'id' => 160,
+                'language_id' => 1,
+                'word' => 'DOB',
+                'translation' => 'تاریخ تولد',
+                'created_at' => '2025-03-11 23:55:08',
+                'updated_at' => '2025-03-11 23:55:08',
+            ),
+            155 => 
+            array (
+                'id' => 161,
+                'language_id' => 1,
+                'word' => 'Last updated at',
+                'translation' => 'اخرین تاریخ تجدید',
+                'created_at' => '2025-03-11 23:55:44',
+                'updated_at' => '2025-03-11 23:55:44',
+            ),
+            156 => 
+            array (
+                'id' => 162,
+                'language_id' => 1,
+                'word' => 'Customer Form',
+                'translation' => 'فورم مشتریان',
+                'created_at' => '2025-03-11 23:56:02',
+                'updated_at' => '2025-03-11 23:56:02',
+            ),
+            157 => 
+            array (
+                'id' => 163,
+                'language_id' => 1,
+                'word' => 'Customer photo',
+                'translation' => 'عکس مشتری',
+                'created_at' => '2025-03-11 23:58:35',
+                'updated_at' => '2025-03-11 23:58:35',
+            ),
+            158 => 
+            array (
+                'id' => 164,
+                'language_id' => 1,
+                'word' => 'NIC copy',
+                'translation' => 'کاپی تذکره',
+                'created_at' => '2025-03-11 23:58:52',
+                'updated_at' => '2025-03-11 23:58:52',
+            ),
+            159 => 
+            array (
+                'id' => 165,
+                'language_id' => 1,
+                'word' => 'Father name',
+                'translation' => 'اسم پدر',
+                'created_at' => '2025-03-11 23:59:12',
+                'updated_at' => '2025-03-11 23:59:12',
+            ),
+            160 => 
+            array (
+                'id' => 166,
+                'language_id' => 1,
+                'word' => 'Date of birth',
+                'translation' => 'تاریخ تولد',
+                'created_at' => '2025-03-11 23:59:29',
+                'updated_at' => '2025-03-11 23:59:29',
+            ),
+            161 => 
+            array (
+                'id' => 168,
+                'language_id' => 1,
+                'word' => 'Province',
+                'translation' => 'ولایت',
+                'created_at' => '2025-03-12 00:01:27',
+                'updated_at' => '2025-03-12 00:01:27',
+            ),
+            162 => 
+            array (
+                'id' => 169,
+                'language_id' => 1,
+                'word' => 'District',
+                'translation' => 'ولسوالی / ناخیه',
+                'created_at' => '2025-03-12 00:01:48',
+                'updated_at' => '2025-03-12 00:02:12',
+            ),
+            163 => 
+            array (
+                'id' => 170,
+                'language_id' => 1,
+                'word' => 'Village',
+                'translation' => 'قریه',
+                'created_at' => '2025-03-12 00:01:56',
+                'updated_at' => '2025-03-12 00:01:56',
+            ),
+            164 => 
+            array (
+                'id' => 172,
+                'language_id' => 1,
+                'word' => 'Permanent address information',
+                'translation' => 'معلومات آدرس دایمی',
+                'created_at' => '2025-03-12 00:09:12',
+                'updated_at' => '2025-03-12 00:09:12',
+            ),
+            165 => 
+            array (
+                'id' => 173,
+                'language_id' => 1,
+                'word' => 'Laghman',
+                'translation' => 'لغمان',
+                'created_at' => '2025-03-12 00:16:27',
+                'updated_at' => '2025-03-12 00:16:51',
+            ),
+            166 => 
+            array (
+                'id' => 174,
+                'language_id' => 1,
+                'word' => 'Takhar',
+                'translation' => 'تخار',
+                'created_at' => '2025-03-12 00:19:03',
+                'updated_at' => '2025-03-12 00:19:03',
+            ),
+            167 => 
+            array (
+                'id' => 175,
+                'language_id' => 1,
+                'word' => 'Add a request',
+                'translation' => 'ثبت درخاست',
+                'created_at' => '2025-03-12 00:20:17',
+                'updated_at' => '2025-03-12 00:20:17',
+            ),
+            168 => 
+            array (
+                'id' => 176,
+                'language_id' => 1,
+                'word' => 'Download NIC copy',
+                'translation' => 'دانلود کاپی تدکره',
+                'created_at' => '2025-03-12 00:20:42',
+                'updated_at' => '2025-03-12 00:20:42',
+            ),
+            169 => 
+            array (
+                'id' => 177,
+                'language_id' => 1,
+                'word' => '[full_name] Profile',
+                'translation' => '‌پروفایل [full_name]',
+                'created_at' => '2025-03-12 00:22:06',
+                'updated_at' => '2025-03-12 00:22:06',
+            ),
+            170 => 
+            array (
+                'id' => 178,
+                'language_id' => 1,
+                'word' => 'Active',
+                'translation' => 'فعال',
+                'created_at' => '2025-03-12 00:23:13',
+                'updated_at' => '2025-03-12 00:23:13',
+            ),
+            171 => 
+            array (
+                'id' => 179,
+                'language_id' => 1,
+                'word' => 'Financing mode',
+                'translation' => 'نوعیت تامین مالی',
+                'created_at' => '2025-03-12 00:24:57',
+                'updated_at' => '2025-03-12 00:24:57',
+            ),
+            172 => 
+            array (
+                'id' => 180,
+                'language_id' => 1,
+                'word' => 'Murabeha',
+                'translation' => 'مرابحه',
+                'created_at' => '2025-03-12 00:25:17',
+                'updated_at' => '2025-03-12 00:25:17',
+            ),
+            173 => 
+            array (
+                'id' => 181,
+                'language_id' => 1,
+                'word' => 'Financing mode module',
+                'translation' => 'بخش نوعیت تامین مالی',
+                'created_at' => '2025-03-12 00:25:42',
+                'updated_at' => '2025-03-12 00:25:42',
+            ),
+            174 => 
+            array (
+                'id' => 182,
+                'language_id' => 1,
+                'word' => 'Murabeha section',
+                'translation' => 'بخش مرابحه',
+                'created_at' => '2025-03-12 00:26:19',
+                'updated_at' => '2025-03-12 00:31:24',
+            ),
+            175 => 
+            array (
+                'id' => 183,
+                'language_id' => 1,
+                'word' => 'Customer',
+                'translation' => 'مشتری',
+                'created_at' => '2025-03-12 00:26:38',
+                'updated_at' => '2025-03-12 00:26:38',
+            ),
+            176 => 
+            array (
+                'id' => 184,
+                'language_id' => 1,
+                'word' => 'Murabeha Form section',
+                'translation' => 'فورم بخش مرابحه',
+                'created_at' => '2025-03-12 00:32:00',
+                'updated_at' => '2025-03-12 00:32:00',
+            ),
+            177 => 
+            array (
+                'id' => 185,
+                'language_id' => 1,
+                'word' => 'Murabeha request form',
+                'translation' => 'فورم درخاست قرضه مرابحه',
+                'created_at' => '2025-03-12 00:32:34',
+                'updated_at' => '2025-03-12 00:32:34',
+            ),
+            178 => 
+            array (
+                'id' => 186,
+                'language_id' => 1,
+                'word' => 'Customer select step',
+                'translation' => 'بخش انتخاب مشتری',
+                'created_at' => '2025-03-12 00:33:04',
+                'updated_at' => '2025-03-12 00:33:04',
+            ),
+            179 => 
+            array (
+                'id' => 187,
+                'language_id' => 1,
+                'word' => 'Select Customer',
+                'translation' => 'انتخاب کردن مشتری',
+                'created_at' => '2025-03-12 00:33:26',
+                'updated_at' => '2025-03-12 00:33:26',
+            ),
+            180 => 
+            array (
+                'id' => 188,
+                'language_id' => 1,
+                'word' => 'This customer has a request which is not final yet',
+                'translation' => 'این مشتری درخواست قبلی دارد که هنوز به اتمام نرسیده است',
+                'created_at' => '2025-03-12 00:34:50',
+                'updated_at' => '2025-03-12 00:34:50',
+            ),
+            181 => 
+            array (
+                'id' => 189,
+                'language_id' => 1,
+                'word' => 'List of Murabeha requests',
+                'translation' => 'لیست در خواست های مرابحه',
+                'created_at' => '2025-03-12 00:44:53',
+                'updated_at' => '2025-03-12 00:44:53',
+            ),
+            182 => 
+            array (
+                'id' => 190,
+                'language_id' => 1,
+                'word' => 'Add new request for Murabeha',
+                'translation' => 'ثبت جدید درخاست مرابحه',
+                'created_at' => '2025-03-12 00:45:27',
+                'updated_at' => '2025-03-12 00:45:27',
+            ),
+            183 => 
+            array (
+                'id' => 191,
+                'language_id' => 1,
+                'word' => '[customer_full_name] is selected',
+                'translation' => '[customer_full_name] انتخاب شده ست',
+                'created_at' => '2025-03-12 00:46:27',
+                'updated_at' => '2025-03-12 00:46:27',
+            ),
+            184 => 
+            array (
+                'id' => 192,
+                'language_id' => 1,
+                'word' => '[customer_full_name] other personal information',
+                'translation' => 'معلومات بیشتر در مورد [customer_full_name]',
+                'created_at' => '2025-03-12 00:48:27',
+                'updated_at' => '2025-03-12 00:48:27',
+            ),
+            185 => 
+            array (
+                'id' => 193,
+                'language_id' => 1,
+                'word' => 'Customer assets details',
+                'translation' => 'معلمات سرمایه های مشتری',
+                'created_at' => '2025-03-12 00:49:01',
+                'updated_at' => '2025-03-12 00:49:01',
+            ),
+            186 => 
+            array (
+                'id' => 194,
+                'language_id' => 1,
+                'word' => 'This step is optional',
+                'translation' => 'این مرحله اختیاری میباشد',
+                'created_at' => '2025-03-12 00:49:37',
+                'updated_at' => '2025-03-12 00:49:37',
+            ),
+            187 => 
+            array (
+                'id' => 195,
+                'language_id' => 1,
+                'word' => 'Personal information',
+                'translation' => 'معلومات شخصی',
+                'created_at' => '2025-03-12 00:50:01',
+                'updated_at' => '2025-03-12 00:50:01',
+            ),
+            188 => 
+            array (
+                'id' => 196,
+                'language_id' => 1,
+                'word' => 'Customer income',
+                'translation' => 'درآمد مشدری',
+                'created_at' => '2025-03-12 00:50:19',
+                'updated_at' => '2025-03-12 00:50:19',
+            ),
+            189 => 
+            array (
+                'id' => 197,
+                'language_id' => 1,
+                'word' => 'Current address information',
+                'translation' => 'معلومات آدرس فعلی مشتری',
+                'created_at' => '2025-03-12 00:50:52',
+                'updated_at' => '2025-03-12 00:50:52',
+            ),
         ));
         
         

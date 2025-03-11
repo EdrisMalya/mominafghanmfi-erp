@@ -15,7 +15,7 @@ use Illuminate\Http\Request;
 class LanguageWordController extends Controller
 {
     public function index(Request $request){
-        $this->allowed('languages-accss');
+        $this->allowed('languages-access');
         $query = LanguageWord::query()->where('language_id', $request->get('language_id'));
         $datatable = new DatatableBuilder($query, ['word', 'translation']);
         return LanguageWordResource::collection($datatable->build());

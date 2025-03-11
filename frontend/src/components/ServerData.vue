@@ -30,6 +30,7 @@ import { api } from 'boot/axios'
 import { errorHandler } from 'src/lib/errorHandler'
 import { useRouter } from 'vue-router'
 import { useGeneralStore } from 'stores/generalStore'
+import { useQuasar } from 'quasar'
 
 export default defineComponent({
     name: 'ServerData',
@@ -62,12 +63,17 @@ export default defineComponent({
             type: Function,
             default: undefined,
         },
+        onError: {
+            type: Function,
+            default: undefined,
+        },
     },
     setup(prop) {
         const router = useRouter()
         const generalStore = useGeneralStore()
         const data = ref(undefined)
         const error = ref(null)
+        const $q = useQuasar()
 
         const fetchDataFromServer = async () => {
             if (!prop.fetchData || !prop.url) return
@@ -83,6 +89,13 @@ export default defineComponent({
             } catch (err) {
                 errorHandler(err, '', router)
                 error.value = err
+                if (typeof prop.onError !== 'undefined') {
+                    prop.onError()
+                    $q.notify({
+                        message: err?.response?.data?.message,
+                        color: 'red',
+                    })
+                }
             }
         }
 

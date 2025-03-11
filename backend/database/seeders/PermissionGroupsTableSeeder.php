@@ -199,6 +199,16 @@ class PermissionGroupsTableSeeder extends Seeder
                 'created_at' => '2025-03-08 22:28:40',
                 'updated_at' => '2025-03-08 22:28:40',
             ),
+            18 => 
+            array (
+                'id' => 20,
+                'name' => 'Asset types',
+                'icon' => NULL,
+                'permission_group_id' => 11,
+                'sort' => 3,
+                'created_at' => '2025-03-11 00:04:49',
+                'updated_at' => '2025-03-11 00:04:49',
+            ),
         ));
         
         

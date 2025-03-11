@@ -12,21 +12,62 @@
                         <q-btn
                             icon-right="add"
                             to="/financing-mode/murabeha/form"
-                            :label="$translate('Add new request for Murbeha')"
+                            :label="$translate('Add new request for Murabeha')"
                         />
                     </protected-component>
                 </div>
             </div>
             <div class="py-4">
-                <p class="text-center text-red-500">No request found</p>
+                <datatable-component
+                    url="financing-mode/murabeha/requests"
+                    edit-permission-key="murabeha-access"
+                    :on-edit="
+                        data =>
+                            $router.push({
+                                path: `/financing-mode/murabeha/form/${data?.id}`,
+                            })
+                    "
+                    :columns="[
+                        {
+                            label: 'ID',
+                            name: 'id',
+                            sortable: true,
+                        },
+                        {
+                            label: 'Customer',
+                            name: 'customer.full_name',
+                        },
+                        {
+                            label: 'Status',
+                            name: 'status',
+                            sortable: true,
+                        },
+                        {
+                            label: 'Created by',
+                            name: 'created_by.full_name',
+                            sortable: true,
+                        },
+                        {
+                            label: 'Created date',
+                            name: 'created_at',
+                            sortable: true,
+                        },
+                        {
+                            label: 'Last updated at',
+                            name: 'updated_at',
+                            sortable: true,
+                        },
+                    ]"
+                />
             </div>
         </q-intersection>
     </protected-component>
 </template>
 <script>
 import ProtectedComponent from 'components/ProtectedComponent.vue'
+import DatatableComponent from 'components/DatatableComponent.vue'
 
 export default {
-    components: { ProtectedComponent },
+    components: { DatatableComponent, ProtectedComponent },
 }
 </script>

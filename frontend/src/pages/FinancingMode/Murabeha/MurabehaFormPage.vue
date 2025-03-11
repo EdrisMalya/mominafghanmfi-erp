@@ -16,6 +16,9 @@
                         color="primary"
                         animated
                         class="mt-2"
+                        header-nav
+                        bordered
+                        flat
                     >
                         <murabeha-select-user-step
                             :server-request="serverRequest"
@@ -29,37 +32,22 @@
                             :completed-steps="completed_steps"
                         />
 
-                        <q-step
-                            :name="3"
-                            title="Customer assets details"
-                            icon="assignment"
-                            disable
-                        >
-                            <q-btn label="back" @click="changeStep(2)" />
-                        </q-step>
+                        <murabeha-customer-asset-details-form-step
+                            :server-request="serverRequest"
+                            :change-step="changeStep"
+                            :completed-steps="completed_steps"
+                        />
 
-                        <q-step
-                            :name="4"
-                            title="Create an ad"
-                            icon="add_comment"
-                        >
-                            Try out different ad text to see what brings in the
-                            most customers, and learn how to enhance your ads
-                            using features like ad extensions. If you run into
-                            any problems with your ads, find out how to tell if
-                            they're running and how to resolve approval issues.
-
-                            <q-stepper-navigation>
-                                <q-btn color="primary" label="Finish" />
-                                <q-btn
-                                    flat
-                                    @click="step = 2"
-                                    color="primary"
-                                    label="Back"
-                                    class="q-ml-sm"
-                                />
-                            </q-stepper-navigation>
-                        </q-step>
+                        <murabeha-customer-borrowing-information
+                            :server-request="serverRequest"
+                            :change-step="changeStep"
+                            :completed-steps="completed_steps"
+                        />
+                        <murabeha-customer-needed-items
+                            :server-request="serverRequest"
+                            :change-step="changeStep"
+                            :completed-steps="completed_steps"
+                        />
                     </q-stepper>
                 </server-data>
             </div>
@@ -71,8 +59,14 @@ import ProtectedComponent from 'components/ProtectedComponent.vue'
 import MurabehaSelectUserStep from 'pages/FinancingMode/Murabeha/FormSteps/MurabehaSelectCustomerStep.vue'
 import ServerData from 'components/ServerData.vue'
 import MurabehaCustomerOtherPersonalInformationStep from 'pages/FinancingMode/Murabeha/FormSteps/MurabehaCustomerOtherPersonalInformationStep.vue'
+import MurabehaCustomerAssetDetailsFormStep from 'pages/FinancingMode/Murabeha/FormSteps/MurabehaCustomerAssetDetailsFormStep.vue'
+import MurabehaCustomerBorrowingInformation from 'pages/FinancingMode/Murabeha/FormSteps/MurabehaCustomerBorrowingInformation.vue'
+import MurabehaCustomerNeededItems from 'pages/FinancingMode/Murabeha/FormSteps/MurabehaCustomerNeededItems.vue'
 export default {
     components: {
+        MurabehaCustomerNeededItems,
+        MurabehaCustomerBorrowingInformation,
+        MurabehaCustomerAssetDetailsFormStep,
         MurabehaCustomerOtherPersonalInformationStep,
         ServerData,
         MurabehaSelectUserStep,
@@ -93,9 +87,17 @@ export default {
                 this.completed_steps.push(1)
                 this.changeStep(2)
             }
-            if (requestData.step_2?.customer_other_info !== null) {
+            if (requestData.step_2?.is_completed) {
                 this.completed_steps.push(2)
                 this.changeStep(3)
+            }
+            if (requestData.step_3?.is_completed) {
+                this.completed_steps.push(3)
+                this.changeStep(4)
+            }
+            if (requestData.step_4?.is_completed) {
+                this.completed_steps.push(4)
+                this.changeStep(5)
             }
         },
     },

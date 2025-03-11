@@ -1,5 +1,5 @@
 <template>
-    <q-dialog :model-value="true" persistent>
+    <q-dialog :dir="$localization.direction" :model-value="true" persistent>
         <q-card class="md:min-w-[800px]">
             <q-card-section>
                 <h2 class="text-lg">

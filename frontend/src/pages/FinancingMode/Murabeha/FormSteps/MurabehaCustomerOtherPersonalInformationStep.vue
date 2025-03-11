@@ -15,17 +15,18 @@
         icon="person"
         :done="done || completedSteps.includes(2)"
         :error="!!errorMessage"
-        :caption="errorMessage"
+        :caption="$translate(errorMessage)"
         active-icon="person"
         done-color="green"
         :disable="false"
     >
         <form-builder-component
             class-name="grid grid-cols-6 gap-x-3"
-            submit-area-class-name="col-span-6 gap-x-2 flex items-center"
+            submit-area-class-name="col-span-6 gap-x-2 flex items-center pt-6 justify-between"
             :on-values-changed="() => (unsaved = true)"
             :on-submit-completed="onRequestComplete"
             :action="`/financing-mode/murabeha/steps-progress/2/${$route.params.id}`"
+            :hide-submit-button="!completedSteps.includes(2)"
             method="POST"
             :fields="[
                 {
@@ -168,22 +169,26 @@
             ]"
         >
             <template v-slot:other_actions>
-                <q-btn
-                    v-if="!unsaved"
-                    :label="$translate('Back')"
-                    size="small"
-                    icon="arrow_back"
-                    color="primary"
-                    @click="changeStep(1)"
-                />
-                <q-btn
-                    v-if="!unsaved && completedSteps.includes(2)"
-                    icon-right="arrow_forward"
-                    :label="$translate('Next')"
-                    size="small"
-                    color="primary"
-                    @click="changeStep(1)"
-                />
+                <div class="flex items-center gap-x-2">
+                    <q-btn
+                        v-if="!unsaved"
+                        :label="$translate('Back')"
+                        size="small"
+                        outline
+                        icon="arrow_back"
+                        color="primary"
+                        @click="changeStep(1)"
+                    />
+                    <q-btn
+                        v-if="!unsaved && completedSteps.includes(2)"
+                        icon-right="arrow_forward"
+                        :label="$translate('Next')"
+                        size="small"
+                        outline
+                        color="primary"
+                        @click="changeStep(3)"
+                    />
+                </div>
             </template>
         </form-builder-component>
     </q-step>

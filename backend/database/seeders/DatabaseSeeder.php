@@ -40,5 +40,9 @@ class DatabaseSeeder extends Seeder
         $this->call(FilesTableSeeder::class);
         $this->call(FinanceModeRequestStepsTableSeeder::class);
         $this->call(RequestStepFieldsTableSeeder::class);
+        $this->call(AssetTypesTableSeeder::class);
+        $this->call(CustomerDetailsTableSeeder::class);
+        $this->call(MurabehaRequestsTableSeeder::class);
+        $this->call(CustomerAssetsTableSeeder::class);
     }
 }

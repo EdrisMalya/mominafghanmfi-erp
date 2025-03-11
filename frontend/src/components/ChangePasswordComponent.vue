@@ -1,7 +1,12 @@
 <template>
     <!-- notice dialogRef here -->
     <ValidationForm :validation-schema="schema" @submit="onSubmit">
-        <q-dialog no-backdrop-dismiss ref="dialogRef" @hide="onDialogHide">
+        <q-dialog
+            :dir="$localization.direction"
+            no-backdrop-dismiss
+            ref="dialogRef"
+            @hide="onDialogHide"
+        >
             <q-card class="q-dialog-plugin">
                 <q-card-section>
                     <p class="text-2xl py-3 pb-5 text-center">

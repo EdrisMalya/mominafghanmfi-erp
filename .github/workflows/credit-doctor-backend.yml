@@ -20,7 +20,16 @@ jobs:
         password: ${{ secrets.HOST_PASSWORD }}
 
         script: |
-          cd /home/edris/projects/mominafghanmfi-erp/
+          cd /home/projects/mominafghanmfi-erp/
           git pull origin main
 
-          docker compose up --build -d
+          docker rm -f mis-frontend
+          docker image rm -f mis:frontend
+          docker build -t mis:frontend frontend/
+          
+          docker rm -f core-backend
+          docker image rm -f mis:core-backend
+          docker build -t mis:core-backend backend/
+
+          docker run -d -p 3000:80 --name mis-frontend --restart=always mis:frontend
+          docker run -d -p 8000:80 --name core-backend --restart=always --network mysql-network -v /home/volumes/mominafghanmfi-mis:/var/www/storage mis:core-backend

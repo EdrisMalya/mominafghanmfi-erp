@@ -1,5 +1,9 @@
 <template>
-    <q-dialog :model-value="showModel" persistent>
+    <q-dialog
+        :dir="$localization.direction"
+        :model-value="showModel"
+        persistent
+    >
         <q-card style="min-width: 350px">
             <q-card-section>
                 <div class="text-h6" v-if="modelType === 'permission-group'">

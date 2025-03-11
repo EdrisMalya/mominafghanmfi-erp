@@ -496,6 +496,51 @@ class PermissionsTableSeeder extends Seeder
                 'created_at' => '2025-03-08 22:55:29',
                 'updated_at' => '2025-03-08 22:55:29',
             ),
+            53 => 
+            array (
+                'id' => 58,
+                'name' => 'Access',
+                'key' => 'asset-types-access',
+                'permission_group_id' => 20,
+                'created_at' => '2025-03-11 00:04:55',
+                'updated_at' => '2025-03-11 00:04:55',
+            ),
+            54 => 
+            array (
+                'id' => 59,
+                'name' => 'Create',
+                'key' => 'asset-types-create',
+                'permission_group_id' => 20,
+                'created_at' => '2025-03-11 00:04:59',
+                'updated_at' => '2025-03-11 00:04:59',
+            ),
+            55 => 
+            array (
+                'id' => 60,
+                'name' => 'Edit',
+                'key' => 'asset-types-edit',
+                'permission_group_id' => 20,
+                'created_at' => '2025-03-11 00:05:02',
+                'updated_at' => '2025-03-11 00:05:02',
+            ),
+            56 => 
+            array (
+                'id' => 61,
+                'name' => 'Delete',
+                'key' => 'asset-types-delete',
+                'permission_group_id' => 20,
+                'created_at' => '2025-03-11 00:05:05',
+                'updated_at' => '2025-03-11 00:05:05',
+            ),
+            57 => 
+            array (
+                'id' => 62,
+                'name' => 'Edit request',
+                'key' => 'murabeha-edit-request',
+                'permission_group_id' => 19,
+                'created_at' => '2025-03-11 22:47:40',
+                'updated_at' => '2025-03-11 22:47:40',
+            ),
         ));
         
         

@@ -108,17 +108,30 @@ use Illuminate\Support\Facades\File;
             $exitsFile->delete();
         }
     }
-    public static function uploadFile($file, $relation_id, $relation_type, $folder_prepend='', $replace= false)
+    public static function deleteFile($file_id)
+    {
+        $exitsFile = \App\Models\File::query()->find($file_id);
+        if($exitsFile){
+            static::removeImageFromUrl($exitsFile->file_url);
+            $exitsFile->delete();
+        }
+    }
+    public static function uploadFile($file, $relation_id, $relation_type, $folder_prepend='', $replace= false, $fileId = 0)
     {
         if($file != null){
             if($replace){
-                static::removeFile($relation_id, $relation_type, $folder_prepend);
-                static::storeFile($file, $relation_id, $relation_type, $folder_prepend);
+                if($fileId != 0){
+                    static::deleteFile($fileId);
+                }else{
+                    static::removeFile($relation_id, $relation_type, $folder_prepend);
+                }
+                return static::storeFile($file, $relation_id, $relation_type, $folder_prepend);
             }
             else{
-                static::storeFile($file, $relation_id, $relation_type, $folder_prepend);
+                return static::storeFile($file, $relation_id, $relation_type, $folder_prepend);
             }
         }
+        return 0;
     }
 
 

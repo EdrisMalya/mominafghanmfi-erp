@@ -1,5 +1,5 @@
 <template>
-    <q-dialog :model-value="true">
+    <q-dialog :dir="$localization.direction" :model-value="true">
         <q-card style="width: 500px">
             <q-card-section>
                 <h2 class="text-xl font-bold">Filter activity log</h2>

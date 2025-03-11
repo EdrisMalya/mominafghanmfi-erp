@@ -44,6 +44,14 @@
                                     :label="$translate('Financing mode')"
                                 />
                             </protected-component>
+                            <protected-component
+                                permission-key="asset-types-access"
+                            >
+                                <q-tab
+                                    name="asset-types"
+                                    :label="$translate('Asset types')"
+                                />
+                            </protected-component>
                         </q-tabs>
                     </template>
 

@@ -15,7 +15,13 @@
                     clickable
                     v-close-popup
                     @click="
-                        languageStore.setLanguage(language.abbr, language.dir)
+                        () => {
+                            languageStore.setLanguage(
+                                language.abbr,
+                                language.dir,
+                            )
+                            reload()
+                        }
                     "
                 >
                     <q-item-section>{{ language.name }}</q-item-section>
@@ -26,19 +32,30 @@
     </q-btn>
 </template>
 <script>
-import { defineComponent } from 'vue'
+import { defineComponent, watch } from 'vue'
 import { useLanguageStore } from 'stores/languageStore'
 
 export default defineComponent({
     name: 'LanguageSelectorComponent',
     setup() {
         const languageStore = useLanguageStore()
+        watch(
+            () => languageStore.selected_language,
+            newValue => {
+                console.log(newValue)
+            },
+        )
         return {
             languageStore,
         }
     },
     mounted() {
         this.languageStore.getLanguages()
+    },
+    methods: {
+        reload() {
+            window.location.reload()
+        },
     },
 })
 </script>

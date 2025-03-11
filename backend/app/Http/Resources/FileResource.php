@@ -19,6 +19,7 @@ class FileResource extends JsonResource
             'url' => $this->file_url,
             'ext' => Helpers::fileExt($this->file_name),
             'file_size' => Helpers::formatFileSize($this->file_size),
+            'file_name' => $this->file_name,
         ];
     }
 }

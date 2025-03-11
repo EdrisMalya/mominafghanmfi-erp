@@ -1,7 +1,7 @@
 <template>
     <q-item
         :active="active"
-        class="mr-2 rounded-br-full rounded-tr-full"
+        class="mr-2 rtl:ml-2 rtl:mr-0 rounded-br-full rounded-tr-full rtl:rounded-bl-full rtl:rounded-tl-full rtl:rounded-br-none rtl:rounded-tr-none"
         active-class="bg-gradient-to-r from-teal-400 to-indigo-500 shadow-lg text-white "
         :to="to"
         clickable

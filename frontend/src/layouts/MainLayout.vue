@@ -1,6 +1,5 @@
 <template>
     <q-layout
-        view="lHh LpR fFf"
         :dir="languageStore.direction"
         :class="languageStore.direction === 'rtl' ? 'text-right' : 'text-left'"
     >
@@ -114,6 +113,7 @@
                     v-if="!$route.meta?.disable_layout"
                     show-if-above
                     :width="250"
+                    class="!h-screen"
                     :side="languageStore.direction === 'rtl' ? 'right' : 'left'"
                 >
                     <q-scroll-area
@@ -132,7 +132,7 @@
                         style="height: 150px"
                     >
                         <div
-                            class="absolute top-2 !p-0 !z-50 !right-2 bg-transparent"
+                            class="absolute top-2 !p-0 !z-50 !right-2 bg-transparent rtl:!left-2 rtl:"
                         >
                             <q-icon
                                 class="cursor-pointer"

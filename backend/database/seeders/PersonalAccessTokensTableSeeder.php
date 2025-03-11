@@ -21,55 +21,29 @@ class PersonalAccessTokensTableSeeder extends Seeder
         \DB::table('personal_access_tokens')->insert(array (
             0 => 
             array (
-                'id' => 12,
-                'tokenable_type' => 'App\\Models\\User',
-                'tokenable_id' => 1,
-                'name' => 'user_token',
-                'token' => 'a27a5d334f3cc5f98f1d4ccea64042873ec7847f659adf4705ec80d581d0d5b2',
-                'abilities' => '["*"]',
-                'last_used_at' => '2025-03-07 16:23:03',
-                'expires_at' => NULL,
-                'created_at' => '2025-03-06 15:40:14',
-                'updated_at' => '2025-03-07 16:23:03',
-            ),
-            1 => 
-            array (
-                'id' => 16,
-                'tokenable_type' => 'App\\Models\\User',
-                'tokenable_id' => 1,
-                'name' => 'user_token',
-                'token' => '522ef7bf9fcc318dedf81e05720ec78f1d74735bddf9553ed32cc4e1662c2d64',
-                'abilities' => '["*"]',
-                'last_used_at' => '2025-03-08 10:58:51',
-                'expires_at' => NULL,
-                'created_at' => '2025-03-07 22:14:50',
-                'updated_at' => '2025-03-08 10:58:51',
-            ),
-            2 => 
-            array (
-                'id' => 18,
-                'tokenable_type' => 'App\\Models\\User',
-                'tokenable_id' => 1,
-                'name' => 'user_token',
-                'token' => '0477d305c15debbd79a30039cd2f7f74d8d87f70601035a390cef450a91db446',
-                'abilities' => '["*"]',
-                'last_used_at' => '2025-03-08 22:55:45',
-                'expires_at' => NULL,
-                'created_at' => '2025-03-08 21:51:25',
-                'updated_at' => '2025-03-08 22:55:45',
-            ),
-            3 => 
-            array (
                 'id' => 19,
                 'tokenable_type' => 'App\\Models\\User',
                 'tokenable_id' => 4,
                 'name' => 'user_token',
                 'token' => 'e7bf1ca926572070ca0e2f429020320865452b4656c5254ef29c4fa3e2fbbaeb',
                 'abilities' => '["*"]',
-                'last_used_at' => '2025-03-08 22:56:14',
+                'last_used_at' => '2025-03-12 02:00:53',
                 'expires_at' => NULL,
                 'created_at' => '2025-03-08 22:09:30',
-                'updated_at' => '2025-03-08 22:56:14',
+                'updated_at' => '2025-03-12 02:00:53',
+            ),
+            1 => 
+            array (
+                'id' => 23,
+                'tokenable_type' => 'App\\Models\\User',
+                'tokenable_id' => 2,
+                'name' => 'user_token',
+                'token' => '4a2d1c3c45060a6316878d0b33496319a1c411744d3abdb79ed9663859366b1f',
+                'abilities' => '["*"]',
+                'last_used_at' => '2025-03-12 00:50:53',
+                'expires_at' => NULL,
+                'created_at' => '2025-03-11 23:45:25',
+                'updated_at' => '2025-03-12 00:50:53',
             ),
         ));
         

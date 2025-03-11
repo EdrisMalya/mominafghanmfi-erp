@@ -31,10 +31,32 @@
         "
         :clearable="true"
     >
+        <template v-slot:option="scope">
+            <q-item v-bind="scope.itemProps">
+                <q-item-section>
+                    <q-item-label>{{
+                        $translate(resolve(optionLabel, scope.opt))
+                    }}</q-item-label>
+                </q-item-section>
+            </q-item>
+        </template>
         <template v-slot:no-option>
             <q-item>
                 <q-item-section class="text-grey"> No results </q-item-section>
             </q-item>
+        </template>
+        <template v-slot:append>
+            <q-btn
+                size="sm"
+                round
+                flat
+                icon="add"
+                @click="handleCreatable"
+                v-if="createdAble"
+            />
+        </template>
+        <template v-slot:selected-item="scope">
+            {{ $translate(resolve(optionLabel, scope.opt)) }}
         </template>
     </q-select>
 </template>
@@ -42,7 +64,6 @@
 import { defineComponent, ref, watch } from 'vue'
 import { resolve } from 'src/lib/helpers'
 import { useGeneralStore } from 'stores/generalStore'
-import * as url from 'node:url'
 
 export default defineComponent({
     setup() {
@@ -59,6 +80,7 @@ export default defineComponent({
         return {
             revalidateValue,
             setRevalidateValue,
+            resolve,
         }
     },
     props: [
@@ -82,6 +104,7 @@ export default defineComponent({
         'onCreate',
         'selectId',
         'serverSearchAble',
+        'handleCreatable',
     ],
     data() {
         return {

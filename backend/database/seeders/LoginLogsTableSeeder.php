@@ -415,6 +415,72 @@ class LoginLogsTableSeeder extends Seeder
                 'created_at' => '2025-03-08 22:09:30',
                 'updated_at' => '2025-03-08 22:09:30',
             ),
+            36 => 
+            array (
+                'id' => 37,
+                'email' => 'edris.malya@dab.gov.af',
+                'ip_address' => '127.0.0.1',
+                'login_succeed' => 0,
+                'login_token' => NULL,
+                'message' => 'The provided credentials are incorrect.',
+                'created_at' => '2025-03-10 00:52:09',
+                'updated_at' => '2025-03-10 00:52:09',
+            ),
+            37 => 
+            array (
+                'id' => 38,
+                'email' => 'edris.malya@dab.gov.af',
+                'ip_address' => '127.0.0.1',
+                'login_succeed' => 1,
+                'login_token' => '20|r9bDITAHUdOOzL63zVoWsxiA9BXusslxZ3Kh23Eo',
+                'message' => 'Logged in successfully.',
+                'created_at' => '2025-03-10 00:52:12',
+                'updated_at' => '2025-03-10 00:52:12',
+            ),
+            38 => 
+            array (
+                'id' => 39,
+                'email' => 'edris.malya@dab.gov.af',
+                'ip_address' => '127.0.0.1',
+                'login_succeed' => 1,
+                'login_token' => '21|ZariNxf8LTlRCyMM9RIIcQWKG6kMy5TgEo1FZ090',
+                'message' => 'Logged in successfully.',
+                'created_at' => '2025-03-11 00:04:24',
+                'updated_at' => '2025-03-11 00:04:24',
+            ),
+            39 => 
+            array (
+                'id' => 40,
+                'email' => 'edris.malya@dab.gov.af',
+                'ip_address' => '127.0.0.1',
+                'login_succeed' => 0,
+                'login_token' => NULL,
+                'message' => 'The provided credentials are incorrect.',
+                'created_at' => '2025-03-11 22:35:41',
+                'updated_at' => '2025-03-11 22:35:41',
+            ),
+            40 => 
+            array (
+                'id' => 41,
+                'email' => 'edris.malya@dab.gov.af',
+                'ip_address' => '127.0.0.1',
+                'login_succeed' => 1,
+                'login_token' => '22|zqHvJrHSVLZtTy8MaVYTQ5SaY65vgmgwxyNcgmkL',
+                'message' => 'Logged in successfully.',
+                'created_at' => '2025-03-11 22:35:43',
+                'updated_at' => '2025-03-11 22:35:43',
+            ),
+            41 => 
+            array (
+                'id' => 42,
+                'email' => 'adrismalya@gmail.com',
+                'ip_address' => '127.0.0.1',
+                'login_succeed' => 1,
+                'login_token' => '23|LiWMV9iUPUMUOXyvpJNRvC1DBWShYHfoZIFmZEWF',
+                'message' => 'Logged in successfully.',
+                'created_at' => '2025-03-11 23:45:25',
+                'updated_at' => '2025-03-11 23:45:25',
+            ),
         ));
         
         

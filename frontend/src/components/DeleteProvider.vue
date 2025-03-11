@@ -10,6 +10,8 @@ export default {
         handleDeleteRole(
             url,
             revalidateKey,
+            method = 'DELETE',
+            onSuccess = undefined,
             title = 'Confirm',
             message = 'Are you sure you want to delete',
         ) {
@@ -22,7 +24,14 @@ export default {
                 .onOk(async () => {
                     this.$q.loading.show()
                     try {
-                        const result = await api.delete(url)
+                        const result = await api({
+                            url,
+                            method,
+                        })
+                        if (typeof onSuccess !== 'undefined') {
+                            if (typeof onSuccess === 'function')
+                                onSuccess(result.data)
+                        }
                         if (result.data.result) {
                             this.$q.notify({
                                 message: this.$translate(result.data.message),

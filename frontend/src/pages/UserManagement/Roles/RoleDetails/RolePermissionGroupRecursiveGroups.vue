@@ -7,7 +7,7 @@
     >
         <q-card>
             <q-card-section>
-                <div class="pl-4 border-l">
+                <div class="pl-4 border-l rtl:pr-4">
                     <p class="font-bold">Permissions</p>
                     <div class="px-5 py-3">
                         <p

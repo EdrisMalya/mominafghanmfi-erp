@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\ProvinceResource;
+use App\Models\AssetType;
 use App\Models\CountryProvince;
 use App\Models\Province;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class GeneralController extends Controller
 {
@@ -21,6 +23,31 @@ class GeneralController extends Controller
     public function countryProvinces()
     {
         return CountryProvince::query()->where('active', true)->get();
+    }
+    public function assetTypes(Request $request)
+    {
+        switch ($request->method()){
+            case 'GET':
+                return AssetType::query()->where('status', true)->orderBy('id', 'desc')->get();
+            case 'POST':
+                $data = $request->validate([
+                    'name' => ['required', 'string', 'min:1', Rule::unique('asset_types')]
+                ]);
+                $asset = AssetType::query()->create($data);
+                return ['result' => true, 'message' => 'Created successfully', 'created_id' => $asset->id];
+            case 'DELETE':
+                $this->allowed('asset-types-delete');
+                AssetType::query()->findOrFail($request->get('id'))->delete();
+                return ['result' => true, 'message' => 'Deleted successfully'];
+            case 'PUT':
+                $this->allowed('asset-types-delete');
+                $asset = AssetType::query()->findOrFail($request->get('id'));
+                $data = $request->validate([
+                    'name' => ['required', 'string', 'min:1', Rule::unique('asset_types')->ignore($asset)]
+                ]);
+                $asset->update($data);
+                return ['result' => true, 'message' => 'Deleted successfully'];
+        }
     }
 
     private function handlePost($what){

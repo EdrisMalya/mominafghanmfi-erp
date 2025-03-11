@@ -43,7 +43,7 @@
 
                         <div v-else-if="field?.type === 'datepicker'">
                             <datepicker-component
-                                :label="field.label"
+                                :label="$translate(field.label)"
                                 :value="value"
                                 :error-message="
                                     errorMessage?.replaceAll('_', ' ')
@@ -64,7 +64,9 @@
                                 :option-value="field?.option_value ?? 'id'"
                                 :default-value="value"
                                 :error-message="errorMessage"
+                                :created-able="field.create_able"
                                 :id="field.name"
+                                :handle-creatable="field?.handle_create"
                                 :on-change="
                                     data => {
                                         handleSelectChange(
@@ -87,7 +89,7 @@
                             <q-select
                                 :model-value="value"
                                 :options="field.options"
-                                :label="field.label"
+                                :label="$translate(field.label)"
                                 dense
                                 :error-message="errorMessage"
                                 :error="!!errorMessage"
@@ -124,7 +126,7 @@
                                     file => formField.onChange(file)
                                 "
                                 dense
-                                :label="field.label"
+                                :label="$translate(field.label)"
                                 :accept="`${field.accept}`"
                                 @rejected="onRejected"
                                 :error="!!errorMessage"
@@ -177,13 +179,15 @@
                             </q-file>
                         </div>
                         <div v-else-if="field.type === 'div'">
-                            <p :class="field.div_class">{{ field.label }}</p>
+                            <p :class="field.div_class">
+                                {{ $translate(field.label) }}
+                            </p>
                         </div>
                         <div v-else-if="field.type === 'money'">
                             <money-input
                                 :error-message="errorMessage"
                                 :model-value="value"
-                                :label="field.label"
+                                :label="$translate(field.label)"
                                 :append-text="field.append_text"
                                 :on-change="
                                     moneyValue => formField.onChange(moneyValue)
@@ -202,7 +206,7 @@
                                 v-for="(option, index) in field.options"
                                 :key="index"
                                 :label="option"
-                                :model-value="value"
+                                :model-value="$translate(value)"
                                 :val="option"
                                 @update:model-value="
                                     radioValue => formField.onChange(radioValue)
@@ -223,7 +227,7 @@
 
             <div :class="submitAreaClassName">
                 <q-btn
-                    :label="submitLabel ?? 'Save'"
+                    :label="$translate(submitLabel ?? 'Save')"
                     :icon-right="submitIcon ?? 'save'"
                     color="green"
                     type="submit"
@@ -233,8 +237,8 @@
                     v-if="!hideSubmitButton ?? true"
                 />
                 <slot name="other_actions" />
+                <slot :formValues="values" />
             </div>
-            <slot :formValues="values" />
             <form-values-listener
                 :form-values="values"
                 :on-values-changes="onValuesChanged"

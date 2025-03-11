@@ -17,13 +17,15 @@ Route::middleware(['auth:sanctum'])->group(function(){
 
     Route::group(['prefix' => 'financing-mode', 'middleware' => ['checkEmployeeProfile']], function (){
         Route::group(['prefix' => 'murabeha'], function (){
-            Route::post('steps-progress/{step}/{request_id?}', [\App\Http\Controllers\FinanceMode\MurabehaController::class, 'processStep']);
+            Route::get('requests', [\App\Http\Controllers\FinanceMode\MurabehaController::class, 'index']);
+            Route::match(['POST', 'DELETE', 'PUT', 'GET'], 'steps-progress/{step}/{request_id?}', [\App\Http\Controllers\FinanceMode\MurabehaController::class, 'processStep']);
             Route::get('steps-request/{request}/', [\App\Http\Controllers\FinanceMode\MurabehaController::class, 'getStepRequest']);
         });
     });
 
     Route::group(['prefix' => 'general'], function (){
        Route::get('country-provinces', [\App\Http\Controllers\GeneralController::class, 'countryProvinces']);
+       Route::match(['POST', 'GET', 'DELETE'],'asset-types', [\App\Http\Controllers\GeneralController::class, 'assetTypes']);
     });
 
     Route::get('/user', [\App\Http\Controllers\UserManagement\UserManagementController::class, 'user']);

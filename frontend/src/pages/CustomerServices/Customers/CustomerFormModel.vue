@@ -1,5 +1,5 @@
 <template>
-    <q-dialog :model-value="true" persistent>
+    <q-dialog :dir="$localization.direction" :model-value="true" persistent>
         <q-card class="min-w-[700px]">
             <q-card-section class="text-lg border-b">
                 <p>{{ $translate('Customer Form') }}</p>
@@ -94,7 +94,7 @@
                             },
 
                             {
-                                label: 'Permanent address information ',
+                                label: 'Permanent address information',
                                 name: 'empty',
                                 type: 'div',
                                 className: 'col-span-3',
@@ -140,7 +140,7 @@
                                 icon-right="close"
                                 color="red"
                                 size="small"
-                                class="ml-1"
+                                class="ml-1 rtl:mr-1"
                                 @click="handleForm(false, 0)"
                             />
                         </template>

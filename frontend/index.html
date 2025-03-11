@@ -17,5 +17,15 @@
   </head>
   <body >
     <!-- quasar:entry-point -->
+    <script>
+      const dir = localStorage.getItem("dir")
+      if(dir != null && dir === "rtl"){
+        const headTag = document.getElementsByTagName('head')[0]
+        const rtlCSS = document.createElement('link')
+        rtlCSS.rel = 'stylesheet'
+        rtlCSS.href = 'src/css/rtl.css'
+        headTag.appendChild(rtlCSS)
+      }
+    </script>
   </body>
 </html>

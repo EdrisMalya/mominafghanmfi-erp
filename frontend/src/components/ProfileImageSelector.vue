@@ -1,7 +1,7 @@
 <template>
     <div
         @click="handleClick"
-        class="w-24 h-24 border mx-auto rounded-full shadow cursor-pointer overflow-hidden"
+        class="w-24 h-24 border mx-auto rounded-full shadow cursor-pointer overflow-hidden bg-white"
         :class="`${errorMessage && '!border-red-500'} ${
             typeof className !== 'undefined' ? '-mt-0' : '-mt-10'
         }`"

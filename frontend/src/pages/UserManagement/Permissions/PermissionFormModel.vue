@@ -1,5 +1,9 @@
 <template>
-    <q-dialog :model-value="permissionModel" persistent>
+    <q-dialog
+        :dir="$localization.direction"
+        :model-value="permissionModel"
+        persistent
+    >
         <q-card class="w-[300px]">
             <q-card-section>
                 <h2 class="text-xl">
