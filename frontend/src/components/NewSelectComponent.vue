@@ -66,6 +66,7 @@ import { resolve } from 'src/lib/helpers'
 import { useGeneralStore } from 'stores/generalStore'
 
 export default defineComponent({
+    name: 'NewSelectComponent',
     setup() {
         const generalStore = useGeneralStore()
         const revalidateValue = ref(null)

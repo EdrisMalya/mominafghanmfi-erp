@@ -4,7 +4,7 @@
         :done="done || completedSteps.includes(3)"
         :title="$translate('Customer assets details')"
         icon="assignment"
-        active-icon="person"
+        active-icon="segment"
         done-color="green"
         :caption="$translate('This step is optional')"
     >

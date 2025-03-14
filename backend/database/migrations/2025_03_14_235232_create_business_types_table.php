@@ -11,14 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('customer_assets', function (Blueprint $table) {
+        Schema::create('business_types', function (Blueprint $table) {
             $table->id();
-            $table->string('relation');
-            $table->unsignedInteger('relation_id');
-            $table->string('asset');
-            $table->unsignedInteger('asset_type_id');
-            $table->unsignedInteger('legal_document_file_id');
-            $table->integer('value');
+            $table->string('name')->unique();
+            $table->boolean('status')->default(true);
             $table->unsignedInteger('created_by');
             $table->timestamps();
         });
@@ -29,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('customer_assets');
+        Schema::dropIfExists('business_types');
     }
 };

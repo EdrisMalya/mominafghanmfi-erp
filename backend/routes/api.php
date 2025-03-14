@@ -26,6 +26,7 @@ Route::middleware(['auth:sanctum'])->group(function(){
     Route::group(['prefix' => 'general'], function (){
        Route::get('country-provinces', [\App\Http\Controllers\GeneralController::class, 'countryProvinces']);
        Route::match(['POST', 'GET', 'DELETE'],'asset-types', [\App\Http\Controllers\GeneralController::class, 'assetTypes']);
+       Route::match(['POST', 'GET', 'DELETE'],'business-types', [\App\Http\Controllers\GeneralController::class, 'businessTypes']);
     });
 
     Route::get('/user', [\App\Http\Controllers\UserManagement\UserManagementController::class, 'user']);

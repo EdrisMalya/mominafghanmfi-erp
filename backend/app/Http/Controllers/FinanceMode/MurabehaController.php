@@ -6,13 +6,19 @@ use App\Helpers\DatatableBuilder;
 use App\Helpers\Helpers;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\FinancingMode\Murabeha\MurabehaCustomerAssetRequest;
+use App\Http\Requests\FinancingMode\Murabeha\MurabehaCustomerOldBorrowingRequest;
+use App\Http\Requests\FinancingMode\Murabeha\MurabehaCustomerRequiredItemRequest;
 use App\Http\Requests\UserProfileRequest;
 use App\Http\Resources\FinancingMode\Murabeha\MurabehaCustomerAssetResource;
+use App\Http\Resources\FinancingMode\Murabeha\MurabehaCustomerOldBorrowingResource;
+use App\Http\Resources\FinancingMode\Murabeha\MurabehaCustomerRequiredItemResource;
 use App\Http\Resources\FinancingMode\Murabeha\MurabehaResource;
 use App\Http\Resources\FinancingMode\Murabeha\MurabehaStepResource;
 use App\Models\Customer;
 use App\Models\CustomerAsset;
 use App\Models\CustomerDetails;
+use App\Models\CustomerOldBorrowing;
+use App\Models\CustomerRequiredItem;
 use App\Models\MurabehaRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -111,7 +117,7 @@ class MurabehaController extends Controller
                         $data['created_by'] = auth()->id();
                         $data['relation'] = 'murabeha';
                         $data['relation_id'] = $request_id;
-                        $data['legal_document_file_id'] = Helpers::uploadFile($request->file('legal_document'), $murabeha_request->customer_id, 'customer_files', '/murabeha_assets/'.$request_id)->id;
+                        $data['legal_document_file_id'] = Helpers::uploadFile($request->file('legal_document'), $murabeha_request->customer_id, 'customer_files', 'murabeha/'.$request_id.'/customer_assets_document')->id;
                         unset($data['legal_document']);
                         CustomerAsset::query()->create($data);
                         $murabeha_request->update(['step_3_completed' => true]);
@@ -124,7 +130,7 @@ class MurabehaController extends Controller
                         $asset_id = $request->get('asset_id');
                         $asset = CustomerAsset::query()->findOrFail($asset_id);
                         $data =  $validator->validated();
-                        $data['legal_document_file_id'] = Helpers::uploadFile($request->file('legal_document'), $murabeha_request->customer_id, 'customer_files', '/murabeha_assets/'.$request_id, true, $asset->legal_document_file_id)->id??$asset->legal_document_file_id;
+                        $data['legal_document_file_id'] = Helpers::uploadFile($request->file('legal_document'), $murabeha_request->customer_id, 'customer_files', 'murabeha/'.$request_id.'/customer_assets_document', true, $asset->legal_document_file_id)->id??$asset->legal_document_file_id;
                         unset($data['legal_document']);
                         $asset->update($data);
                         return ['result' => true, 'message' => 'Updated successfully'];
@@ -145,12 +151,103 @@ class MurabehaController extends Controller
                 if ($request->has('skip_customer_borrowing_information') && $request->method() == 'PUT'){
                     $murabeha_request->update(['step_4_completed' => true]);
                     return ['result' => true, 'message' => 'Customer step 4 skipped successfully'];
+                }else{
+                    switch ($request->method()){
+                        case 'POST':
+                            $validator = Validator::make($request->all(), (new MurabehaCustomerOldBorrowingRequest())->rules());
+                            if ($validator->fails()) {
+                                return response()->json(['errors' => $validator->errors()], 422);
+                            }
+                            $data =  $validator->validated();
+                            $data['created_by'] = auth()->id();
+                            $data['relation'] = 'murabeha';
+                            $data['relation_id'] = $murabeha_request->id;
+                            CustomerOldBorrowing::query()->create($data);
+                            $murabeha_request->update(['step_4_completed' => true]);
+                            return ['result' => true, 'message' => 'Customer borrowing information saved successfully'];
+                        case 'PUT':
+                            $borrowing_id = $request->get('borrowing_id');
+                            $borrowing = CustomerOldBorrowing::query()->findOrFail($borrowing_id);
+                            $validator = Validator::make($request->all(), (new MurabehaCustomerOldBorrowingRequest())->rules());
+                            if ($validator->fails()) {
+                                return response()->json(['errors' => $validator->errors()], 422);
+                            }
+                            $borrowing->update($validator->validated());
+                            return ['result' => true, 'message' => 'Customer borrowing information updated successfully'];
+                        case 'GET':
+                            $borrowing_id = $request->get('borrowing_id');
+                            $borrowing = CustomerOldBorrowing::query()->findOrFail($borrowing_id);
+                            return new MurabehaCustomerOldBorrowingResource($borrowing);
+                        case 'DELETE':
+                            $borrowing_id = $request->get('borrowing_id');
+                            $borrowing = CustomerOldBorrowing::query()->findOrFail($borrowing_id);
+                            $borrowing->delete();
+                            if($murabeha_request->customer_old_borrowings->count() < 1){
+                                $murabeha_request->update(['step_4_completed' => false]);
+                            }
+                            return ['result' => true, 'message' => 'Delete successfully'];
+                    }
+                }
+
+            case '5':
+                switch ($request->method()){
+                    case 'POST':
+                        $validator = Validator::make($request->all(), (new MurabehaCustomerRequiredItemRequest())->rules());
+                        if ($validator->fails()) {
+                            return response()->json(['errors' => $validator->errors()], 422);
+                        }
+                        $data = $validator->validated();
+                        $data['created_by'] = auth()->id();
+                        $data['relation'] = 'murabeha';
+                        $data['relation_id'] = $murabeha_request->id;
+                        $data['supplier_document_id'] = Helpers::uploadFile($request->file('supplier_document'), $murabeha_request->customer_id, 'customer_files', 'murabeha/'.$request_id.'/customer_supplier_document')?->id??null;
+                        $data['total_price'] = $data['price_per_item'] * $data['quantity'];
+                        unset($data['supplier_document']);
+                        CustomerRequiredItem::query()->create($data);
+                        $murabeha_request->update(['step_5_completed' => true]);
+                        return ['result' => true, 'message' => 'Saved successfully'];
+                    case 'GET':
+                        $item = CustomerRequiredItem::query()->findOrFail($request->get('item_id'));
+                        return new MurabehaCustomerRequiredItemResource($item);
+                    case 'PUT':
+                        $item = CustomerRequiredItem::query()->findOrFail($request->get('item_id'));
+                        $validator = Validator::make($request->all(), (new MurabehaCustomerRequiredItemRequest())->rules());
+                        if ($validator->fails()) {
+                            return response()->json(['errors' => $validator->errors()], 422);
+                        }
+                        $data = $validator->validated();
+                        $data['supplier_document_id'] = Helpers::uploadFile($request->file('supplier_document'), $murabeha_request->customer_id, 'customer_files', 'murabeha/'.$request_id.'/customer_supplier_document', true, $item->supplier_document_id)?->id??$item->supplier_document_id;
+                        unset($data['supplier_document']);
+                        $data['total_price'] = $data['price_per_item'] * $data['quantity'];
+                        $item->update($data);
+                        return ['result' => true, 'message' => 'Updated successfully'];
+                    case 'DELETE':
+                        $item_ids = explode(',', $request->get('item_ids'));
+                        $items = CustomerRequiredItem::query()->whereIn('id', $item_ids)->get();
+                        foreach ($items as $item) {
+                            Helpers::deleteFile($item->supplier_document_id);
+                            $item->delete();
+                        }
+                        if($murabeha_request->customer_requested_items->count() < 1){
+                            $murabeha_request->update(['step_5_completed' => false]);
+                        }
+                        return ['result' => true, 'message' => 'Deleted successfully'];
+
                 }
         }
     }
 
     public function getStepRequest(MurabehaRequest $request)
     {
-        return new MurabehaStepResource($request->load(['customer', 'customer_details', 'customer_assets.asset_type', 'customer_assets.legal_document']));
+        return new MurabehaStepResource($request->load(
+            [
+                'customer',
+                'customer_details',
+                'customer_assets.asset_type',
+                'customer_assets.legal_document',
+                'customer_old_borrowings',
+                'customer_requested_items.supplier_document',
+            ]
+        ));
     }
 }

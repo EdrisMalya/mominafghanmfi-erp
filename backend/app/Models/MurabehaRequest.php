@@ -61,6 +61,14 @@ class MurabehaRequest extends Model
     {
         return $this->hasMany(CustomerAsset::class, 'relation_id')->where('relation', 'murabeha');
     }
+    public function customer_old_borrowings() : HasMany
+    {
+        return $this->hasMany(CustomerOldBorrowing::class, 'relation_id')->where('relation', 'murabeha');
+    }
+    public function customer_requested_items() : HasMany
+    {
+        return $this->hasMany(CustomerRequiredItem::class, 'relation_id')->where('relation', 'murabeha');
+    }
 
     public function created_by_user() : BelongsTo
     {

@@ -131,6 +131,8 @@
                                 @rejected="onRejected"
                                 :error="!!errorMessage"
                                 :error-message="errorMessage"
+                                :hint="field?.hint"
+                                :clearable="field?.clearable ?? true"
                             >
                                 <template v-slot:prepend>
                                     <q-icon name="attach_file" />
@@ -234,8 +236,21 @@
                     size="small"
                     :loading="loading"
                     :disable="loading"
-                    v-if="!hideSubmitButton ?? true"
+                    v-if="!hideSubmitButton && !progress"
                 />
+                <q-circular-progress
+                    v-if="loading && progress"
+                    show-value
+                    font-size="12px"
+                    :value="percent"
+                    size="50px"
+                    :thickness="0.22"
+                    color="primary"
+                    track-color="grey-3"
+                    class="q-ma-md"
+                >
+                    {{ percent }}%
+                </q-circular-progress>
                 <slot name="other_actions" />
                 <slot :formValues="values" />
             </div>
@@ -331,6 +346,8 @@ export default {
             )
             let formValues = null
             if (checkFileExistence !== -1) {
+                this.progress = true
+                this.percent = 0
                 const formData = new FormData()
                 for (let key in values) {
                     formData.append(key, values[key] ?? '')
@@ -344,6 +361,11 @@ export default {
                     url: this.action,
                     method: this.method ?? 'POST',
                     data: formValues,
+                    onUploadProgress: progressEvent => {
+                        this.percent = Math.round(
+                            (progressEvent.loaded * 100) / progressEvent.total,
+                        )
+                    },
                 })
                 if (typeof this.onSubmitCompleted === 'function') {
                     this.onSubmitCompleted(result)
@@ -352,6 +374,8 @@ export default {
                 errorHandler(err, actions.setErrors, this.$router)
             } finally {
                 this.loading = false
+                this.percent = 0
+                this.progress = false
             }
         },
         onRejected(rejectedEntries) {
@@ -367,6 +391,8 @@ export default {
     data() {
         return {
             loading: false,
+            progress: false,
+            percent: 60,
         }
     },
 }

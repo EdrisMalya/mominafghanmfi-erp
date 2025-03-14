@@ -11,7 +11,7 @@
                     id="murabeha-form"
                 >
                     <q-stepper
-                        v-model="step"
+                        :model-value="step"
                         vertical
                         color="primary"
                         animated
@@ -19,6 +19,7 @@
                         header-nav
                         bordered
                         flat
+                        @update:model-value="stepSelected"
                     >
                         <murabeha-select-user-step
                             :server-request="serverRequest"
@@ -48,6 +49,11 @@
                             :change-step="changeStep"
                             :completed-steps="completed_steps"
                         />
+                        <murabeha-p-o-fand-repayment
+                            :server-request="serverRequest"
+                            :change-step="changeStep"
+                            :completed-steps="completed_steps"
+                        />
                     </q-stepper>
                 </server-data>
             </div>
@@ -62,8 +68,10 @@ import MurabehaCustomerOtherPersonalInformationStep from 'pages/FinancingMode/Mu
 import MurabehaCustomerAssetDetailsFormStep from 'pages/FinancingMode/Murabeha/FormSteps/MurabehaCustomerAssetDetailsFormStep.vue'
 import MurabehaCustomerBorrowingInformation from 'pages/FinancingMode/Murabeha/FormSteps/MurabehaCustomerBorrowingInformation.vue'
 import MurabehaCustomerNeededItems from 'pages/FinancingMode/Murabeha/FormSteps/MurabehaCustomerNeededItems.vue'
+import MurabehaPOFandRepayment from 'pages/FinancingMode/Murabeha/FormSteps/MurabehaPOFandRepayment.vue'
 export default {
     components: {
+        MurabehaPOFandRepayment,
         MurabehaCustomerNeededItems,
         MurabehaCustomerBorrowingInformation,
         MurabehaCustomerAssetDetailsFormStep,
@@ -82,6 +90,50 @@ export default {
         changeStep(stepNumber) {
             this.step = stepNumber
         },
+        stepSelected(value) {
+            switch (value) {
+                case 2:
+                    if (!this.completed_steps.includes(1)) {
+                        this.$q.notify({
+                            message:
+                                'Please complete step 1 then come to step 2',
+                            color: 'red',
+                        })
+                        return
+                    }
+                    break
+                case 3:
+                    if (!this.completed_steps.includes(2)) {
+                        this.$q.notify({
+                            message:
+                                'Please complete step 2 then come to step 3',
+                            color: 'red',
+                        })
+                        return
+                    }
+                    break
+                case 4:
+                    if (!this.completed_steps.includes(3)) {
+                        this.$q.notify({
+                            message:
+                                'Please complete step 3 then come to step 4',
+                            color: 'red',
+                        })
+                        return
+                    }
+                    break
+                case 5:
+                    if (!this.completed_steps.includes(4)) {
+                        this.$q.notify({
+                            message:
+                                'Please complete step 5 then come to step 6',
+                            color: 'red',
+                        })
+                        return
+                    }
+            }
+            this.step = value
+        },
         onDataReceived(requestData) {
             if (requestData.step_1?.customer !== null) {
                 this.completed_steps.push(1)
@@ -98,6 +150,10 @@ export default {
             if (requestData.step_4?.is_completed) {
                 this.completed_steps.push(4)
                 this.changeStep(5)
+            }
+            if (requestData.step_5?.is_completed) {
+                this.completed_steps.push(5)
+                this.changeStep(6)
             }
         },
     },

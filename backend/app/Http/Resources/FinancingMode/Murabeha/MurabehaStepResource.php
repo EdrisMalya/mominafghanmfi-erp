@@ -29,8 +29,14 @@ class MurabehaStepResource extends JsonResource
                 'is_completed' => $this->step_3_completed
             ],
             'step_4' => [
-                'customer_borrowing_info' => $this->whenLoaded('customer_borrowing_info', fn () => MurabehaCustomerAssetResource::collection($this->customer_borrowing_info)),
+                'customer_borrowing_info' => $this->whenLoaded('customer_old_borrowings', fn () => MurabehaCustomerOldBorrowingResource::collection($this->customer_old_borrowings)),
                 'is_completed' => $this->step_4_completed
+            ],
+            'step_5' => [
+                'customer_requested_items' => $this->whenLoaded('customer_requested_items', fn () => MurabehaCustomerRequiredItemResource::collection($this->customer_requested_items), []),
+                'is_completed' => $this->step_5_completed,
+                'grand_total' => $this->customer_requested_items->sum('total_price'),
+                'formatted_grand_total' => number_format($this->customer_requested_items->sum('total_price')),
             ],
         ];
     }

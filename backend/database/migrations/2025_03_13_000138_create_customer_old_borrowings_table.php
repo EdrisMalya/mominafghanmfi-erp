@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('customer_assets', function (Blueprint $table) {
+        Schema::create('customer_old_borrowings', function (Blueprint $table) {
             $table->id();
             $table->string('relation');
             $table->unsignedInteger('relation_id');
-            $table->string('asset');
-            $table->unsignedInteger('asset_type_id');
-            $table->unsignedInteger('legal_document_file_id');
-            $table->integer('value');
+            $table->string('loan_reference');
+            $table->string('name_of_the_lender');
+            $table->string('address_of_the_lender');
+            $table->string('for_how_long');
             $table->unsignedInteger('created_by');
             $table->timestamps();
         });
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('customer_assets');
+        Schema::dropIfExists('customer_old_borrowings');
     }
 };
